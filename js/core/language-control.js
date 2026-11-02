@@ -1,42 +1,92 @@
-// Sélecteur de langue : un menu déroulant dans un coin de la carte
-import { getLanguages, getCurrentLanguage, setLanguage, onLanguageChange, t } from './i18n.js';
 
-function loadStylesheetOnce(href) {
-    if (document.querySelector(`link[href="${href}"]`)) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-}
+import {
+    getLanguages,
+    getCurrentLanguage,
+    setLanguage,
+    onLanguageChange,
+    t
+} from './i18n.js';
 
 export function addLanguageControl(map) {
-    loadStylesheetOnce('css/ui.css');
-
     const LanguageControl = L.Control.extend({
         options: { position: 'topright' },
 
         onAdd() {
-            const container = L.DomUtil.create('div', 'gw-lang');
-            const select = L.DomUtil.create('select', 'gw-lang__select', container);
+            if (!document.querySelector('link[href="css/ui.css"]')) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'css/ui.css';
+                document.head.appendChild(link);
+            }
 
-            getLanguages().forEach((lang) => {
-                const option = L.DomUtil.create('option', '', select);
-                option.value = lang.code;
-                option.textContent = lang.label;   // chaque langue dans sa propre langue
-            });
+            const container = L.DomUtil.create('div', 'gw-lang');
+            const button = L.DomUtil.create('button', 'gw-lang__button', container);
+            const menu = L.DomUtil.create('div', 'gw-lang__menu', container);
+
+            button.type = 'button';
+            button.setAttribute('aria-haspopup', 'true');
+            button.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+
+            const close = () => {
+                menu.hidden = true;
+                button.setAttribute('aria-expanded', 'false');
+            };
 
             const refresh = () => {
-                select.value = getCurrentLanguage();
-                select.setAttribute('aria-label', t('language'));
+                const current = getLanguages().find(
+                    lang => lang.code === getCurrentLanguage()
+                );
+
+                button.textContent = `${current?.label ?? 'English'} ▾`;
+                button.setAttribute('aria-label', t('language'));
+
+                menu.querySelectorAll('button').forEach(option => {
+                    option.classList.toggle(
+                        'is-active',
+                        option.dataset.lang === getCurrentLanguage()
+                    );
+                });
             };
-            refresh();
 
-            select.addEventListener('change', () => setLanguage(select.value));
-            onLanguageChange(refresh);
+            button.addEventListener('click', () => {
+                menu.hidden = !menu.hidden;
+                button.setAttribute(
+                    'aria-expanded',
+                    String(!menu.hidden)
+                );
+            });
 
-            // Évite de déplacer ou zoomer la carte en utilisant le menu
+            getLanguages().forEach(lang => {
+                const option = L.DomUtil.create(
+                    'button',
+                    'gw-lang__option',
+                    menu
+                );
+
+                option.type = 'button';
+                option.dataset.lang = lang.code;
+                option.textContent = lang.label;
+
+                option.addEventListener('click', async () => {
+                    close();
+                    await setLanguage(lang.code);
+                });
+            });
+
+            container.addEventListener('keydown', event => {
+                if (event.key === 'Escape') {
+                    close();
+                    button.focus();
+                }
+            });
+
             L.DomEvent.disableClickPropagation(container);
             L.DomEvent.disableScrollPropagation(container);
+
+            onLanguageChange(refresh);
+            refresh();
+
             return container;
         }
     });

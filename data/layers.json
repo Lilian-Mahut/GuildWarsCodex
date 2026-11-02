@@ -1,13 +1,17 @@
 {
   "iconScales": [0.3, 0.3, 0.5, 0.7, 1],
   "layers": {
+    "arena":    { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
+    "dungeon":  { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
     "gate":     { "kind": "icon", "minZoom": 1, "labelMinZoom": 4 },
+    "guildhall":  { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
+    "merchant": { "kind": "icon", "minZoom": 4 },
+    "mission":  { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
+    "outpost":  { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
     "realm":    { "kind": "text", "minZoom": 0, "maxZoom": 0 },
     "region":   { "kind": "text", "minZoom": 1, "maxZoom": 1 },
-    "town":     { "kind": "icon", "minZoom": 1, "labelMinZoom": 2 },
-    "outpost":  { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
-    "mission":  { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
-    "zone":     { "kind": "text", "minZoom": 4 },
-    "merchant": { "kind": "icon", "minZoom": 4 }
+    "torment":  { "kind": "icon","minZoom": 2, "labelMinZoom": 3 },
+    "town":     { "kind": "icon", "minZoom": 2, "labelMinZoom": 3 },
+    "zone":     { "kind": "text", "minZoom": 4 }
   }
 }

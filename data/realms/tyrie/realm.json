@@ -3,6 +3,7 @@
   "name": "Tyrie",
   "title": { "x": 4200, "y": 4200 },
   "categories": {
+    "arena":    { "file": "arena.json",  "icon": { "file": "Arena_Icon.png",  "size": [65, 65] } },
     "gate":     { "file": "gate.json",  "icon": { "file": "Gate_Asura.png",  "size": [28, 28] } },
     "mission":  { "file": "mission.json",  "icon": { "file": "Mission_Icon.png",  "size": [120, 120] } },
     "outpost":  { "file": "outpost.json",  "icon": { "file": "Outpost_Icon.png",  "size": [65, 65] } },

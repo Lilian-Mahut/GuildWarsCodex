@@ -1,1 +1,3 @@
-[{}]
+[
+  {"id": "asura-gate", "name": "Asura Gate", "x": 3975, "y": 16899, "minZoom": 2, "labelMinZoom": 4}
+]

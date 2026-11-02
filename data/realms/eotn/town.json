@@ -1,3 +1,5 @@
 [
-  {}
+  {"id": "rata-sum", "name": "Rata Sum", "x": 1646, "y": 6062, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "gunnars-hold", "name": "Gunnar's Hold", "x": 6264, "y": 1973, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "doomlore-shrine", "name": "Doomlore Shrine", "x": 7417, "y": 1388, "minZoom": 1, "labelMinZoom": 2}
 ]

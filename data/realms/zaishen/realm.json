@@ -4,7 +4,9 @@
   "title": { "x": 2000, "y": 13500 },
   "categories": {
     "arena":    { "file": "arena.json", "icon": { "file": "Arena_Icon.png", "size": [28, 28] } },
+    "guildhall": { "file": "guildhall.json", "icon": { "file": "Guild_Icon.png", "size": [64, 64] } },
     "mission":  { "file": "mission.json",  "icon": { "file": "Z_Mission_Icon.png",  "size": [28, 28] } },
+    "outpost":  { "file": "outpost.json",  "icon": { "file": "Outpost_Icon.png",  "size": [25, 25] } },
     "region":   { "file": "region.json" },
     "town":  { "file": "town.json",  "icon": { "file": "Town_Icon.png",  "size": [28, 28] } },
     "zone":     { "file": "zone.json"}

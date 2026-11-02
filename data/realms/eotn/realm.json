@@ -1,12 +1,44 @@
 {
   "id": "eotn",
   "name": "Eye of the North",
-  "title": { "x": 4200, "y": 4200 },
+  "title": {
+    "x": 5700,
+    "y": 1500
+  },
   "categories": {
-    "region":   { "file": "region.json" },
-    "town":  { "file": "town.json",  "icon": { "file": "Town_Icon.png",  "size": [93, 93] } },
-    "outpost":  { "file": "outpost.json",  "icon": { "file": "Outpost_Icon.png",  "size": [65, 65] } },
-    "mission":  { "file": "mission.json",  "icon": { "file": "Mission_Icon.png",  "size": [120, 120] } },
-    "zone":     { "file": "zone.json"}
+    "dungeon": {
+      "file": "dungeon.json",
+      "icon": {
+        "file": "Dungeon_Icon.png",
+        "size": [32, 32]
+      }
+    },
+    "mission": {
+      "file": "mission.json",
+      "icon": {
+        "file": "Mission_Icon.png",
+        "size": [64, 64]
+      }
+    },
+    "outpost": {
+      "file": "outpost.json",
+      "icon": {
+        "file": "Outpost_Icon.png",
+        "size": [25, 25]
+      }
+    },
+    "region": {
+      "file": "region.json"
+    },
+    "town": {
+      "file": "town.json",
+      "icon": {
+        "file": "Town_Icon.png",
+        "size": [57, 57]
+      }
+    },
+    "zone": {
+      "file": "zone.json"
+    }
   }
 }

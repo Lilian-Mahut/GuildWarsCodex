@@ -1,21 +1,119 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<base href="../"><title>Guild Wars Reborn — Administration</title>
-<link rel="stylesheet" href="vendor/leaflet/leaflet.css"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/markers.css"><link rel="stylesheet" href="admin/admin.css">
-<script defer src="vendor/leaflet/leaflet.js"></script><script type="module" src="admin/admin.js"></script></head>
-<body><div id="layout"><aside id="panel"><header><h1>Guild Wars Reborn</h1><small>Administration locale des markers</small></header>
-<div id="notice" role="status">Chargement…</div><label>Recherche<input id="search" placeholder="Nom ou identifiant"></label>
-<div class="filters"><label>Royaume<select id="realmFilter"></select></label><label>Catégorie<select id="categoryFilter"></select></label></div>
-<div class="toolbar"><button id="new">+ Nouveau</button><button id="delete" class="danger">Supprimer</button></div>
-<div id="list" aria-label="Lieux"></div><form id="editor"><h2>Fiche du marker</h2>
-<label>Royaume<select name="realm" required></select></label><label>Catégorie<select name="category" required></select></label>
-<label>ID (laisser vide pour génération)<input name="id" placeholder="Généré par build-data.py"></label>
-<label>Nom anglais<input name="name_en" required></label>
-<div class="filters"><label>X<input name="x" type="number" step="any" required></label><label>Y<input name="y" type="number" step="any" required></label></div>
-<div class="toolbar"><button type="button" id="pick">Placer par clic</button><button type="button" id="locate">Centrer</button></div>
-<label>Nom français<input name="name_fr"></label><label>Nom espagnol<input name="name_es"></label><label>Nom allemand<input name="name_de"></label>
-<div class="filters"><label>minZoom<input name="minZoom" type="number" min="0"></label><label>labelMinZoom<input name="labelMinZoom" type="number" min="0"></label></div>
-<label>Afficher le label<select name="label"><option value="">Par défaut</option><option value="false">Non</option><option value="true">Oui</option></select></label>
-<button type="submit">Appliquer à la liste</button></form>
-<div class="actions"><button id="save">Enregistrer le CSV</button><button id="build">Générer les JSON</button></div><pre id="log"></pre>
-</aside><main><div id="map"></div><div id="hint">Clique sur « Placer par clic » puis sur la carte.</div></main></div></body></html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <base href="../" />
+    <title>Guild Wars Reborn — Administration</title>
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/markers.css" />
+    <link rel="stylesheet" href="admin/admin.css" />
+    <link rel="stylesheet" href="css/cursors.css" />
+    <script defer src="vendor/leaflet/leaflet.js"></script>
+    <script type="module" src="admin/admin.js"></script>
+  </head>
+  <body>
+    <div id="layout">
+      <aside id="panel">
+        <header>
+          <h1>Guild Wars Reborn</h1>
+          <small>Administration locale des markers</small>
+        </header>
+        <div id="notice" role="status">Chargement…</div>
+        <label
+          >Recherche<input id="search" placeholder="Nom ou identifiant"
+        /></label>
+        <div class="filters">
+          <label>Royaume<select id="realmFilter"></select></label
+          ><label>Catégorie<select id="categoryFilter"></select></label>
+        </div>
+        <div class="toolbar">
+          <button id="new">+ Nouveau</button
+          ><button id="delete" class="danger">Supprimer</button>
+        </div>
+        <div class="quality">
+          <label
+            >État des données<select id="qualityFilter">
+              <option value="all">Tous les lieux</option>
+              <option value="missing-coords">Coordonnées manquantes</option>
+              <option value="missing-translations">
+                Traductions incomplètes
+              </option>
+              <option value="missing-id">Identifiant à générer</option>
+              <option value="nearby">Markers proches</option>
+            </select></label
+          >
+          <div id="qualityStats"></div>
+        </div>
+        <div id="list" aria-label="Lieux"></div>
+        <form id="editor">
+          <h2>Fiche du marker</h2>
+          <label>Royaume<select name="realm" required></select></label
+          ><label>Catégorie<select name="category" required></select></label>
+          <label
+            >ID (laisser vide pour génération)<input
+              name="id"
+              placeholder="Généré par build-data.py"
+          /></label>
+          <label>Nom anglais<input name="name_en" required /></label>
+          <div class="filters">
+            <label>X<input name="x" type="number" step="any" required /></label
+            ><label
+              >Y<input name="y" type="number" step="any" required
+            /></label>
+          </div>
+          <div class="toolbar">
+            <button type="button" id="pick">Placer par clic</button
+            ><button type="button" id="locate">Centrer</button
+            ><button type="button" id="undo">Annuler position</button>
+          </div>
+          <p class="tip">
+            Déplace le marker sélectionné à la souris. Utilise les flèches pour
+            l’ajuster (Maj + flèche : 10 pixels).
+          </p>
+          <label>Nom français<input name="name_fr" required /></label
+          ><label>Nom espagnol<input name="name_es" required /></label
+          ><label>Nom allemand<input name="name_de" required /></label>
+          <div class="filters">
+            <label>
+              minZoom
+              <input name="minZoom" type="number" min="0" step="1" required />
+            </label>
+            <label>
+              labelMinZoom
+              <input
+                name="labelMinZoom"
+                type="number"
+                min="0"
+                step="1"
+                required
+              />
+            </label>
+          </div>
+          <label>
+            Affichage du nom sur la carte
+            <select name="label">
+              <option value="">Automatique</option>
+              <option value="true">Toujours</option>
+              <option value="false">Jamais</option>
+            </select>
+          </label>
+          <button type="submit">Appliquer à la liste</button>
+        </form>
+        <section id="preview" class="preview">
+          <h2>Prévisualisation du marker</h2>
+          <div id="previewCard"></div>
+        </section>
+        <div class="actions">
+          <button id="publish" type="button">Enregistrer et publier</button>
+        </div>
+        <pre id="log"></pre>
+      </aside>
+      <main>
+        <div id="map"></div>
+        <div id="hint">Clique sur « Placer par clic » puis sur la carte.</div>
+      </main>
+    </div>
+  </body>
+</html>

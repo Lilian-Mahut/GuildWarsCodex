@@ -6,10 +6,11 @@ export function initMap(world) {
     const tileSize = 256;
 
     const map = L.map('map', {
-        crs: L.CRS.Simple,
-        minZoom: 0,
-        maxZoom: maxZoom
-    });
+    crs: L.CRS.Simple,
+    minZoom: 0,
+    maxZoom: maxZoom,
+    zoomControl: false
+});
 
     // Taille de chaque carte au zoom max, et étendue totale du monde (union des cartes)
     const factor = Math.pow(2, maxZoom) * tileSize;

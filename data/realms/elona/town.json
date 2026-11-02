@@ -1,3 +1,6 @@
 [
-  {}
+  {"id": "kamadan-jewel-of-istan", "name": "Kamadan, Jewel of Istan", "x": 6271, "y": 12445, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "sunspear-sanctuary", "name": "Sunspear Sanctuary", "x": 7638, "y": 11740, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "the-kodash-bazaar", "name": "The Kodash Bazaar", "x": 8548, "y": 10462, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "the-mouth-of-torment", "name": "The Mouth of Torment", "x": 6586, "y": 9831, "minZoom": 1, "labelMinZoom": 2}
 ]

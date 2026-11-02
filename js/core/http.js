@@ -2,7 +2,7 @@
 
 // JSON obligatoire : erreur claire avec le nom du fichier
 export async function fetchJson(url) {
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) throw new Error(`Impossible de charger ${url} (${res.status})`);
 
     const text = await res.text();
@@ -16,7 +16,7 @@ export async function fetchJson(url) {
 // JSON facultatif (traductions) : absent, vide ou invalide -> {} sans bloquer la carte
 export async function fetchJsonOptional(url) {
     try {
-        const res = await fetch(url);
+        const res = await fetch(url, { cache: "no-store" });
         if (res.status === 404) return {};
         if (!res.ok) throw new Error(`erreur ${res.status}`);
 

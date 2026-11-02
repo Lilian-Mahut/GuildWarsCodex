@@ -22,7 +22,7 @@ function createEntry(map, world, realm, category, def, rule, item) {
     const iconDef = item.icon ?? def.icon ?? rule.icon;
     const iconsPath = (item.icon || def.icon) ? realm.iconsPath : SHARED_ICONS;
 
-    const size = isText ? [0, 0] : iconDef.size;
+    const size = isText ? [0, 0] : (category === 'gate' ? [64, 64] : iconDef.size);
     const half = size[1] / 2;
 
     const classes = [
@@ -33,8 +33,13 @@ function createEntry(map, world, realm, category, def, rule, item) {
         isVisible(zoom, rule, item) ? '' : 'is-hidden'
     ].join(' ');
 
-    const imgHtml = isText ? '' : `
-        <img class="gw-icon" src="${iconsPath}${iconDef.file}" draggable="false">`;
+    const isPortal = category === 'gate';
+
+const imgHtml = isText
+    ? ''
+    : isPortal
+        ? '<span class="gw-icon gw-portal" aria-hidden="true"></span>'
+        : `<img class="gw-icon" src="${iconsPath}${iconDef.file}" draggable="false">`;
 
     const labelHtml = (isText || hasLabel(rule, item)) ? `
         <span class="gw-label${isText || isLabelVisible(zoom, rule, item) ? '' : ' is-off'}"></span>` : '';
@@ -97,6 +102,25 @@ function applyZoom(entries, world, zoom) {
 export function addMarkers(map, world) {
     const entries = [];
 
+    console.table(
+    world.realms.flatMap(realm =>
+        Object.entries(realm.categories).map(([category, def]) => ({
+            royaume: realm.id,
+            categorie: category,
+            total: def.items?.length ?? 0,
+            valides: (def.items ?? []).filter(item =>
+                item &&
+                Number.isFinite(item.x) &&
+                Number.isFinite(item.y)
+            ).length,
+            regle: {
+                ...world.layers[category],
+                ...def.rule
+            }.kind ?? "MANQUANTE"
+        }))
+    )
+);
+
     world.realms.forEach((realm) => {
         Object.entries(realm.categories).forEach(([category, def]) => {
             // Règle globale (layers.json), complétée ou remplacée par celle du royaume
@@ -105,6 +129,14 @@ export function addMarkers(map, world) {
             if (!rule.kind) {
                 console.warn(`"${category}" (${realm.id}) : aucune règle de zoom. Ajoute-la dans layers.json ou dans "rule" du royaume.`);
                 return;
+            }
+            if (realm.id === 'eotn' && category === 'town') {
+                console.log('[DEBUG EOTN TOWN]', {
+                    nombreDeLieux: def.items?.length,
+                    iconeCategorie: def.icon,
+                    iconGlobal: rule.icon,
+                    regle: rule
+                });
             }
             if (rule.kind === 'icon' && !def.icon && !rule.icon) {
                 console.warn(`"${category}" (${realm.id}) : aucune icône définie.`);
@@ -127,4 +159,9 @@ export function addMarkers(map, world) {
 
     // Changement de langue : met à jour tous les noms sans recharger la page
     onLanguageChange(() => entries.forEach(setEntryName));
+
+    console.log(
+    `[GuildWarsReborn] ${entries.length} markers créés`,
+    `| Zoom actuel : ${map.getZoom()}`
+);
 }

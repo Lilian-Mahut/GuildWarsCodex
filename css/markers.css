@@ -47,3 +47,54 @@
 .gw-item.is-hidden .gw-icon {
     pointer-events: none;
 }
+/* Portail animé Guild Wars */
+
+.gw-portal {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 64px;
+}
+
+.gw-portal::before,
+.gw-portal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../assets/shared/icons/portal.png");
+    background-repeat: no-repeat;
+    background-size: 128px 64px;
+
+    pointer-events: none;
+}
+
+.gw-portal::before {
+    background-position: 0 0;
+    animation: gw-portal-first 2s ease-in-out infinite alternate;
+}
+
+.gw-portal::after {
+    background-position: -64px 0;
+    animation: gw-portal-second 2s ease-in-out infinite alternate;
+}
+
+@keyframes gw-portal-first {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes gw-portal-second {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gw-portal::before,
+    .gw-portal::after {
+        animation: none;
+    }
+
+    .gw-portal::before { opacity: 1; }
+    .gw-portal::after  { opacity: 0; }
+}
