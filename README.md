@@ -1,2 +1,2 @@
-# GuildWarsReborn
-Guild Wars interactive map
+# GuildWarsCodex
+Guild Wars interactive codex & maps
