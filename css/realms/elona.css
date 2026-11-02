@@ -1,0 +1,15 @@
+.realm-elona .gw-label, .leaflet-tooltip.realm-elona {
+    font-family: "RealmFont", serif;
+}
+
+.realm-elona .gw-label  {
+    color: #f3d9a4;
+}
+
+.realm-elona.cat-realm  .gw-label {
+    font-size: 44px; letter-spacing: 4px; text-transform: uppercase;
+}
+
+.realm-elona.cat-region .gw-label {
+    font-size: 24px; letter-spacing: 2px;
+}

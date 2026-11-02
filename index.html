@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild Wars 1 - Carte Interactive</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com" />
+    <title>Guild Wars Reborn</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Leaflet CSS en LOCAL -->
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    
     <!-- Notre style custom -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/markers.css" />
+    
+    <link rel="stylesheet" href="css/cursors.css" />
+    <script src="vendor/leaflet/leaflet.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
 </head>
 <body>
-
-    <!-- Conteneur de la carte -->
     <div id="map"></div>
-
-    <!-- Script Leaflet -->
-    <script src="https://unpkg.com"></script>
-    
-    <!-- SDK Supabase (Client CDN gratuit pour l'authentification future) -->
-    <script src="https://jsdelivr.net"></script>
-
-    <!-- Nos modules JS -->
-    <script src="js/supabase.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/app.js"></script>
 </body>
 </html>

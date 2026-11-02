@@ -1,0 +1,59 @@
+{
+  "id": "prophecies",
+  "name": "Prophecies",
+  "tiles": "images/prophecies/{z}/{x}/{y}.jpg",
+  "maxZoom": 4,
+  "iconScales": [0.3, 0.3, 0.5, 0.7, 1],
+  "tilesAtZoom0": [2, 3],
+  "iconsPath": "icons/prophecies/",
+
+  "iconTypes": {
+    "city":    { "file": "city.png",    "size": [64, 64] },
+    "outpost": { "file": "outpost.png", "size": [32, 32] },
+    "dungeon": { "file": "dungeon.png", "size": [32, 32] },
+    "travel":  { "file": "travel.png",  "size": [128, 128] },
+    "arena":   { "file": "arena.png",   "size": [64, 64] },
+    "mission": { "file": "mission.png", "size": [128, 128] },
+    "gate":  { "file": "gate.png",  "size": [64, 64] },
+    "mission_eotn": { "file": "mission_eotn.png", "size": [64, 64] }
+  },
+  
+  "locations": {
+    "city": [
+      { "id": "arche", "name": "L'Arche du Lion", "x": 3960, "y": 4810, "minZoom": 1, "label": true },
+      { "id": "ascalon", "name": "Ascalon", "x": 7107, "y": 4540, "minZoom": 1, "label": true },
+      { "id": "denravi", "name": "Cromlech de Denravi", "x": 1700, "y": 5300, "minZoom": 1, "label": true },
+      { "id": "gunnar", "name": "Campement de Gunnar", "x": 5200, "y": 1300, "minZoom": 1, "label": true },
+      { "id": "droknar", "name": "Forge de Droknar", "x": 5200, "y": 6510, "minZoom": 1, "label": true },
+      { "id": "oasis", "name": "Oasis d'Amoun", "x": 6150, "y": 7850, "minZoom": 1, "label": true },
+      { "id": "sanctuaire", "name": "Sanctuaire de la légende funeste", "x": 7420, "y": 1400, "minZoom": 1, "label": true }
+    ],
+    "outpost": [
+      { "id": "kaineng", "name": "Kaineng", "x": 1000, "y": 1000, "minZoom": 2 },
+      { "id": "tarnished-coast", "name": "Côte ternie", "x": 2000, "y": 2000, "minZoom": 2 }
+    ],
+    "dungeon": [
+      { "id": "sorrow", "name": "Sorrow's Embrace", "x": 3000, "y": 3000, "minZoom": 2 },
+      { "id": "fissure", "name": "Fissure of Woe", "x": 4000, "y": 4000, "minZoom": 2 }
+    ],
+    "travel": [
+      { "id": "port", "name": "Port", "x": 3925, "y": 5100, "minZoom": 1 }
+    ],
+    "arena": [
+      { "id": "arena1", "name": "Arena 1", "x": 7000, "y": 7000, "minZoom": 2 },
+      { "id": "arena2", "name": "Arena 2", "x": 8000, "y": 8000, "minZoom": 2 }
+    ],
+    "mission": [
+      { "id": "mission1", "name": "Mission 1", "x": 9000, "y": 9000, "minZoom": 2 },
+      { "id": "mission2", "name": "Mission 2", "x": 10000, "y": 10000, "minZoom": 2 }
+    ],
+    "gate": [
+      { "id": "gate1", "name": "Gate 1", "x": 11000, "y": 11000, "minZoom": 2 },
+      { "id": "gate2", "name": "Gate 2", "x": 12000, "y": 12000, "minZoom": 2 }
+    ],
+    "mission_eotn": [
+      { "id": "eotn1", "name": "EotN Mission 1", "x": 13000, "y": 13000, "minZoom": 2 },
+      { "id": "eotn2", "name": "EotN Mission 2", "x": 14000, "y": 14000, "minZoom": 2 }
+    ]
+  }
+}

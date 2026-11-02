@@ -1,0 +1,14 @@
+{
+  "id": "elona",
+  "name": "Elona",
+  "title": { "x": 7500, "y": 11500 },
+  "categories": {
+    "gate":     { "file": "gate.json",  "icon": { "file": "Gate_Asura.png",  "size": [28, 28] } },
+    "mission":  { "file": "mission.json",  "icon": { "file": "NF_Mission_Icon.png",  "size": [120, 120] } },
+    "outpost":  { "file": "outpost.json",  "icon": { "file": "NF_Outpost_Icon.png",  "size": [65, 65] } },
+    "region":   { "file": "region.json" },
+    "torment":  { "file": "torment.json",  "icon": { "file": "NF_Torment_Mission_Icon.png",  "size": [120, 120] } },
+    "town":  { "file": "town.json",  "icon": { "file": "NF_Town_Icon.png",  "size": [93, 93] } },
+    "zone":     { "file": "zone.json"}
+  }
+}

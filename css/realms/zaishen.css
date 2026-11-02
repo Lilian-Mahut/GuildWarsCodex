@@ -1,0 +1,15 @@
+.realm-tyrie .gw-label, .leaflet-tooltip.realm-tyrie {
+    font-family: "RealmFont", serif;
+}
+
+.realm-zaishen .gw-label  {
+    color: #f3d9a4;
+}
+
+.realm-zaishen.cat-realm  .gw-label {
+    font-size: 44px; letter-spacing: 4px; text-transform: uppercase;
+}
+
+.realm-zaishen.cat-region .gw-label {
+    font-size: 24px; letter-spacing: 2px;
+}

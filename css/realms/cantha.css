@@ -1,0 +1,15 @@
+.realm-cantha .gw-label, .leaflet-tooltip.realm-cantha {
+    font-family: "RealmFont", serif;
+}
+
+.realm-cantha .gw-label  {
+    color: #f3d9a4;
+}
+
+.realm-cantha.cat-realm  .gw-label {
+    font-size: 44px; letter-spacing: 4px; text-transform: uppercase;
+}
+
+.realm-cantha.cat-region .gw-label {
+    font-size: 24px; letter-spacing: 2px;
+}

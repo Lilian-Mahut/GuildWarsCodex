@@ -1,0 +1,89 @@
+@font-face {
+    font-family: "Arbutus Slab";
+    src: url("../fonts/ArbutusSlab-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "RealmFont";
+    src: url("../fonts/Cinzel/Cinzel-VariableFont_wght.ttf") format("TrueType");
+    font-display: swap;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #0b0c10;
+}
+
+#map {
+    height: 100vh;
+    width: 100vw;
+}
+.leaflet-container {
+    background: #000000 !important;
+}
+.leaflet-control-attribution {
+    display: none !important;
+}
+/* Conteneur Leaflet : sans effet visuel, ne capte pas la souris */
+.leaflet-marker-icon.gw-marker,
+.leaflet-marker-icon.gw-marker.leaflet-interactive {
+    background: none;
+    border: none;
+    pointer-events: none;
+}
+
+/* Boîte qui regroupe l'icône et son nom */
+.gw-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* L'icône : redimensionnée via --s (définie en JS) */
+.gw-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(var(--s, 1));
+    transform-origin: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Le nom : centré sous l'icône réduite (--half = moitié de la hauteur d'origine) */
+.gw-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, calc(var(--half) * var(--s, 1) + 2px));
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    white-space: nowrap;
+    font: "Arbutus Slab", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 0 3px #000, 0 0 3px #000, 1px 1px 2px #000;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* États masqués (fondu) */
+.gw-label.is-off,
+.gw-item.is-hidden .gw-icon,
+.gw-item.is-hidden .gw-label {
+    opacity: 0;
+}
+
+.gw-item.is-hidden .gw-icon {
+    pointer-events: none;
+}

@@ -1,0 +1,5 @@
+[
+  {"id": "isle-of-the-nameless", "name": "Isle of the Nameless", "x": 743, "y": 14565, "minZoom": 3, "labelMinZoom": 4},
+  {"id": "zaishen-menagerie-grounds", "name": "Zaishen Menagerie Grounds", "x": 1176, "y": 14250, "minZoom": 3, "labelMinZoom": 4},
+  {"id": "forbidden-path", "name": "Forbidden Path", "x": 924, "y": 14895, "minZoom": 3, "labelMinZoom": 4}
+]

@@ -1,0 +1,25 @@
+﻿realm;category;id;name_en;x;y;name_fr;name_es;name_de;minZoom;labelMinZoom;label
+tyrie;town;ascalon-city;Ascalon City;7104;4537;Cité d'Ascalon;Ciudad de Ascalon;Ascalon-Stadt;1;2;
+tyrie;town;lions-gate;Lion's Gate;3960;4806;;;;1;2;
+tyrie;town;henge-of-denravi;Henge of Denravi;1713;5247;;;;1;2;
+tyrie;town;the-amnoon-oasis;The Amnoon Oasis;6243;7827;;;;1;2;
+tyrie;town;droknars-forge;Droknar's Forge;5174;6541;;;;1;2;
+tyrie;gate;asura-gate;Asura Gate;3913;4627;;;;2;4;
+eotn;town;rata-sum;Rata Sum;1646;6062;;;;1;2;
+eotn;town;gunnars-hold;Gunnar's Hold;6264;1973;;;;1;2;
+eotn;town;doomlore-shrine;Doomlore Shrine;7417;1388;;;;1;2;
+cantha;town;shing-jea-monastery;Shing Jea Monastery;2516;18662;;;;1;2;
+cantha;town;kaineng-center;Kaineng Center;3960;16804;;;;1;2;
+cantha;town;houze-zu-heltzer;Houze zu Heltzer;4517;18715;;;;1;2;
+cantha;town;cavalon;Cavalon;5451;18256;;;;1;2;
+cantha;gate;asura-gate;Asura Gate;3975;16899;;;;2;4;
+zaishen;town;great-temple-of-balthazar;Great Temple of Balthazar;668;14678;;;;1;2;
+zaishen;arena;random-arenas;Random Arenas;1052;14697;;;;2;4;
+zaishen;arena;codex-arena;Codex Arena;1404;14645;;;;2;4;
+zaishen;arena;heroes-ascent;Heroe's Ascent;1257;14330;;;;2;4;
+elona;town;kamadan-jewel-of-istan;Kamadan, Jewel of Istan;6271;12445;;;;1;2;
+elona;town;sunspear-sanctuary;Sunspear Sanctuary;7638;11740;;;;1;2;
+elona;town;the-kodash-bazaar;The Kodash Bazaar;8548;10462;;;;1;2;
+elona;town;the-mouth-of-torment;The Mouth of Torment;6586;9831;;;;1;2;
+elona;gate;asura-gate;Asura Gate;6177;12555;;;;2;4;
+tyrie;mission;;D'Alessio Seaboard;3782;4882;Côte d'Alessio;Litoral de D'Alessio;D'Alessio-Küste;;;

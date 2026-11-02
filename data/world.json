@@ -1,0 +1,31 @@
+{
+  "name": "Tyrie, Elona, les îles Zaishen et Cantha",
+  "maxZoom": 4,
+  "realms": ["tyrie", "eotn", "elona", "zaishen","cantha"],
+  "maps": [
+    {
+      "id": "tyrie",
+      "tiles": "images/tyrie/{z}/{x}/{y}.jpg",
+      "tilesAtZoom0": [2, 3],
+      "offset": [0, 0]
+    },
+    {
+      "id": "elona",
+      "tiles": "images/elona/{z}/{x}/{y}.jpg",
+      "tilesAtZoom0": [2, 2],
+      "offset": [4110, 9210]
+    },
+    {
+      "id": "zaishen",
+      "tiles": "images/zaishen/{z}/{x}/{y}.jpg",
+      "tilesAtZoom0": [1, 1],
+      "offset": [0, 13800]
+    },
+    {
+      "id": "cantha",
+      "tiles": "images/cantha/{z}/{x}/{y}.jpg",
+      "tilesAtZoom0": [2, 2],
+      "offset": [1000, 16000]
+    }
+  ]
+}

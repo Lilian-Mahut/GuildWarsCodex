@@ -1,0 +1,6 @@
+[
+  {"id": "shing-jea-monastery", "name": "Shing Jea Monastery", "x": 2516, "y": 18662, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "kaineng-center", "name": "Kaineng Center", "x": 3960, "y": 16804, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "houze-zu-heltzer", "name": "Houze zu Heltzer", "x": 4517, "y": 18715, "minZoom": 1, "labelMinZoom": 2},
+  {"id": "cavalon", "name": "Cavalon", "x": 5451, "y": 18256, "minZoom": 1, "labelMinZoom": 2}
+]

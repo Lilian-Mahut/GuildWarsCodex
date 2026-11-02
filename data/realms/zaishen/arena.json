@@ -1,0 +1,5 @@
+[
+  {"id": "random-arenas", "name": "Random Arenas", "x": 1052, "y": 14697, "minZoom": 2, "labelMinZoom": 4},
+  {"id": "codex-arena", "name": "Codex Arena", "x": 1404, "y": 14645, "minZoom": 2, "labelMinZoom": 4},
+  {"id": "heroes-ascent", "name": "Heroe's Ascent", "x": 1257, "y": 14330, "minZoom": 2, "labelMinZoom": 4}
+]

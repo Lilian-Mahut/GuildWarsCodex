@@ -1,0 +1,100 @@
+.gw-item--text .gw-label {
+    transform: translate(-50%, -50%);
+}
+
+.gw-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.gw-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(var(--s, 1));
+    transform-origin: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+.gw-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, calc(var(--half) * var(--s, 1) + 2px));
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    white-space: nowrap;
+    font: "Arbutus Slab", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 0 3px #000, 0 0 3px #000, 1px 1px 2px #000;
+    pointer-events: none;
+    user-select: none;
+}
+
+.gw-label.is-off,
+.gw-item.is-hidden .gw-icon,
+.gw-item.is-hidden .gw-label {
+    opacity: 0;
+}
+
+.gw-item.is-hidden .gw-icon {
+    pointer-events: none;
+}
+/* Portail animé Guild Wars */
+
+.gw-portal {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 64px;
+}
+
+.gw-portal::before,
+.gw-portal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../assets/shared/icons/portal.png");
+    background-repeat: no-repeat;
+    background-size: 128px 64px;
+
+    pointer-events: none;
+}
+
+.gw-portal::before {
+    background-position: 0 0;
+    animation: gw-portal-first 2s ease-in-out infinite alternate;
+}
+
+.gw-portal::after {
+    background-position: -64px 0;
+    animation: gw-portal-second 2s ease-in-out infinite alternate;
+}
+
+@keyframes gw-portal-first {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes gw-portal-second {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gw-portal::before,
+    .gw-portal::after {
+        animation: none;
+    }
+
+    .gw-portal::before { opacity: 1; }
+    .gw-portal::after  { opacity: 0; }
+}

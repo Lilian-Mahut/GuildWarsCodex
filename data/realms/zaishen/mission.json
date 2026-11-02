@@ -1,0 +1,4 @@
+[
+  {"id": "zaishen-challenge", "name": "Zaishen Challenge", "x": 769, "y": 14854, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "zaishen-elite", "name": "Zaishen Elite", "x": 1080, "y": 14928, "minZoom": 0, "labelMinZoom": 3}
+]

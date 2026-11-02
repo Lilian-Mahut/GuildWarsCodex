@@ -1,0 +1,27 @@
+.gw-align {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 230px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: rgba(20, 20, 20, 0.9);
+    color: #f0f0f0;
+    font: 13px/1.4 "Segoe UI", Arial, sans-serif;
+}
+
+.gw-align label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.gw-align select,
+.gw-align button {
+    font: inherit;
+}
+
+.gw-align small {
+    color: #aaa;
+}

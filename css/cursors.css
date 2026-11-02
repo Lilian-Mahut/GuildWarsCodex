@@ -1,0 +1,40 @@
+/* Guild Wars Reborn : curseurs, fichiers réels du projet (noms en minuscules). */
+:root {
+  --gw-cursor-normal: url("../assets/cursors/normal.cur"), auto;
+  --gw-cursor-busy: url("../assets/cursors/busy.cur"), wait;
+  --gw-cursor-link: url("../assets/cursors/link.cur"), pointer;
+  --gw-cursor-location: url("../assets/cursors/location.cur"), pointer;
+  --gw-cursor-move: url("../assets/cursors/move.cur"), grabbing;
+  --gw-cursor-precision: url("../assets/cursors/precision.cur"), crosshair;
+  --gw-cursor-help: url("../assets/cursors/help.cur"), help;
+  --gw-cursor-text: url("../assets/cursors/text-select.cur"), text;
+  --gw-cursor-disabled: url("../assets/cursors/unavaible.cur"), not-allowed;
+  --gw-cursor-h-resize: url("../assets/cursors/h-rezize.cur"), ew-resize;
+  --gw-cursor-v-resize: url("../assets/cursors/v-rezize.cur"), ns-resize;
+  --gw-cursor-resize-1: url("../assets/cursors/rezize.cur"), nwse-resize;
+  --gw-cursor-resize-2: url("../assets/cursors/rezize2.cur"), nesw-resize;
+  --gw-cursor-wib: url("../assets/cursors/wib.cur"), auto;
+  --gw-cursor-zoom-in: url("../assets/cursors/zoom-in.cur"), zoom-in;
+  --gw-cursor-zoom-out: url("../assets/cursors/zoom-out.cur"), zoom-out;
+}
+body, .leaflet-container, .leaflet-container.leaflet-grab { cursor: var(--gw-cursor-normal); }
+a, button, [role="button"], select { cursor: var(--gw-cursor-link); }
+input:not([type="button"]):not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea { cursor: var(--gw-cursor-text); }
+button:disabled, [aria-disabled="true"] { cursor: var(--gw-cursor-disabled); }
+/* Le drag Leaflet a priorité sur le survol des éléments. */
+.leaflet-container.leaflet-dragging,
+.leaflet-container.leaflet-dragging *,
+.leaflet-container.leaflet-drag-target,
+.leaflet-container.leaflet-drag-target * { cursor: var(--gw-cursor-move) !important; }
+/* Marqueurs publics : la zone de clic et son contenu. */
+.leaflet-marker-icon.gw-marker.leaflet-interactive,
+.leaflet-marker-icon.gw-marker.leaflet-interactive .gw-item,
+.leaflet-marker-icon.gw-marker.leaflet-interactive .gw-icon,
+.leaflet-marker-icon.gw-marker.leaflet-interactive .gw-label { cursor: var(--gw-cursor-location) !important; }
+/* Administration : placement, sélection et glisser-déposer. */
+.gw-picking .leaflet-container, .gw-picking .leaflet-container.leaflet-grab { cursor: var(--gw-cursor-precision); }
+.admin-point, .leaflet-marker-icon:has(.admin-point) { cursor: var(--gw-cursor-location) !important; }
+.admin-point.selected, .leaflet-marker-icon:has(.admin-point.selected) { cursor: var(--gw-cursor-move) !important; }
+.gw-zoom-in-mode, .gw-zoom-in-mode .leaflet-container { cursor: var(--gw-cursor-zoom-in) !important; }
+.gw-zoom-out-mode, .gw-zoom-out-mode .leaflet-container { cursor: var(--gw-cursor-zoom-out) !important; }
+.gw-busy { cursor: var(--gw-cursor-busy) !important; }
