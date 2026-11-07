@@ -1,2 +1,6 @@
 ./_media/*
 GuildWarsReborn.zip
+/assets/maps/masters/*-master.png
+/assets/maps/masters/*-complete.png
+_backup/
+*.zip
