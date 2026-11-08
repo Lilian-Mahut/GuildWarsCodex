@@ -14,3 +14,13 @@ GuildWarsReborn.zip
 /assets/maps/masters/*-master.png
 /assets/maps/masters/tyria-complete.png
 /_media/
+
+@'
+
+# Base SQLite locale de GuildWarsCodex Studio
+/data/db/*.db
+/data/db/*.db-wal
+/data/db/*.db-shm
+/data/db/*.sqlite
+/data/db/*.sqlite3
+'@ | Add-Content .gitignore
