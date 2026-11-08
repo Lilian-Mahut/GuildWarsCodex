@@ -1,6 +1,16 @@
-./_media/*
-GuildWarsReborn.zip
-/assets/maps/masters/*-master.png
-/assets/maps/masters/*-complete.png
+# Fichiers temporaires Python
+__pycache__/
+*.pyc
+
+# Sauvegardes locales
 _backup/
-*.zip
+data/source/backups/
+
+# Archives
+GuildWarsReborn.zip
+
+# Ressources cartographiques locales
+# Images maîtresses de travail
+/assets/maps/masters/*-master.png
+/assets/maps/masters/tyria-complete.png
+/_media/
