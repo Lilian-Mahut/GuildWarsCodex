@@ -1,24 +1,20 @@
 """Serveur d'édition local. Lancer depuis la racine : python tools/admin-server.py"""
 import csv
-import io
 import json
 import math
 import os
 from pathlib import Path
 import re
-import shutil
 import subprocess
 import sys
-import tempfile
-from datetime import datetime
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
 
+from sqlite import storage
+
 ROOT = Path(__file__).resolve().parent.parent
 CSV = ROOT / 'data/source/places.csv'
-BACKUPS = ROOT / 'data/source/backups'
 PORT = int(os.environ.get('GW_ADMIN_PORT', '8765'))
-COLUMNS = ['realm','category','id','name_en','x','y','name_fr','name_es','name_de','minZoom','labelMinZoom','label']
 ID_RE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 
 
@@ -26,12 +22,12 @@ def configs():
     return {p.parent.name: json.loads(p.read_text(encoding='utf-8')) for p in (ROOT/'data/realms').glob('*/realm.json')}
 
 
-def load_rows():
+def load_csv_rows():
     with CSV.open(encoding='utf-8-sig', newline='') as f:
         reader = csv.DictReader(f, delimiter=';')
-        if not reader.fieldnames or not set(COLUMNS).issubset(reader.fieldnames):
+        if not reader.fieldnames or not set(storage.COLUMNS).issubset(reader.fieldnames):
             raise ValueError('Colonnes CSV inattendues : vérifie places.csv')
-        return [{k: (r.get(k) or '') for k in COLUMNS} for r in reader if r.get('realm')]
+        return [{k: (r.get(k) or '') for k in storage.COLUMNS} for r in reader if r.get('realm')]
 
 
 def validate(rows):
@@ -53,7 +49,9 @@ def validate(rows):
         if not name and category != '_realm':
             errors.append(f'Ligne {n} : nom anglais obligatoire')
         ident = str(row.get('id','')).strip()
-        if ident and ident != '_realm' and not ID_RE.fullmatch(ident):
+        if category == '_realm':
+            ident = '_realm'
+        elif ident and not ID_RE.fullmatch(ident):
             errors.append(f'Ligne {n} : ID invalide ({ident})')
         if ident:
             key = (realm, ident)
@@ -78,30 +76,11 @@ def validate(rows):
     return errors
 
 
-def backup():
-    BACKUPS.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now().strftime('%Y%m%d-%H%M%S-%f')
-    dest = BACKUPS / f'places-{stamp}.csv'
-    shutil.copy2(CSV, dest)
-    return dest
-
-
 def save_rows(rows):
     errors = validate(rows)
-    if errors: return {'ok': False, 'errors': errors}
-    backup_path = backup()
-    out = io.StringIO(newline='')
-    writer = csv.DictWriter(out, fieldnames=COLUMNS, delimiter=';', lineterminator='\n', extrasaction='ignore')
-    writer.writeheader()
-    for row in rows:
-        writer.writerow({k: str(row.get(k,'')).strip() for k in COLUMNS})
-    fd, tmp = tempfile.mkstemp(dir=CSV.parent, prefix='.places-', suffix='.tmp')
-    try:
-        with os.fdopen(fd, 'w', encoding='utf-8-sig', newline='') as f:
-            f.write(out.getvalue())
-        os.replace(tmp, CSV)
-    finally:
-        if os.path.exists(tmp): os.unlink(tmp)
+    if errors:
+        return {'ok': False, 'errors': errors}
+    backup_path = storage.save_rows(rows)
     return {'ok': True, 'count': len(rows), 'backup': backup_path.name}
 
 
@@ -121,7 +100,7 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
         path = urlsplit(self.path).path
         if path == '/api/places':
-            try: self.reply(200, {'rows': load_rows(), 'realms': {k: list(v['categories']) for k,v in configs().items()}})
+            try: self.reply(200, {'rows': storage.load_rows(), 'realms': {k: list(v['categories']) for k,v in configs().items()}})
             except Exception as exc: self.reply(500, {'error': str(exc)})
             return
         return super().do_GET()
@@ -140,8 +119,9 @@ class Handler(SimpleHTTPRequestHandler):
             if path == '/api/places':
                 result = save_rows(payload.get('rows'))
                 return self.reply(200 if result['ok'] else 422, result)
-            if validate(load_rows()):
-                return self.reply(422, {'ok':False,'errors':validate(load_rows())})
+            errors = validate(load_csv_rows())
+            if errors:
+                return self.reply(422, {'ok': False, 'errors': errors})
             # Snapshot des sorties afin de restaurer en cas d'échec de l'écriture.
             targets = list((ROOT/'data/realms').glob('**/*.json')) + list((ROOT/'i18n').glob('*/names/*.json')) + [CSV]
             snapshot = {p:p.read_bytes() for p in targets if p.exists()}

@@ -169,7 +169,7 @@ function setPosition(i,x,y,remember=true){
     if(i===selected){form.elements.x.value=x;form.elements.y.value=y;}
     markDirty();renderList();
 }
-function markDirty(){dirty=true;notify('Modifications non enregistrées dans le CSV.');}
+function markDirty(){dirty=true;notify('Modifications non enregistrées dans SQLite.');}
 function applyForm() {
     if (selected < 0) return false;
 
@@ -265,7 +265,7 @@ picking = false;
 $('pick').textContent = 'Placer par clic';
 
 notify(
-    'Position définie. Complète les champs obligatoires avant de publier.'
+    'Position définie. Complète les champs obligatoires avant d’enregistrer.'
 );
         });
         notify(`${rows.length} lignes chargées. Sélectionne un lieu ou crée-en un.`);
@@ -310,7 +310,7 @@ $('new').onclick = () => {
 };
 $('delete').onclick=()=>{
     if(selected<0)return;
-    if(!confirm(`Supprimer « ${rows[selected].name_en} » du CSV ?`))return;
+    if(!confirm(`Supprimer « ${rows[selected].name_en} » ?`))return;
     rows.splice(selected,1);selected=-1;markDirty();renderList();
     if(rows.length)select(0);
 };
@@ -342,12 +342,7 @@ $('locate').onclick=()=>{
 $('publish').onclick = async () => {
     const button = $('publish');
 
-    if (selected < 0) {
-        notify('Sélectionne un lieu à enregistrer.', true);
-        return;
-    }
-
-    if (!applyForm()) return;
+    if (selected >= 0 && !applyForm()) return;
 
     // Vérifie les données de tous les lieux avant de sauvegarder.
     const requiredKeys = [
@@ -368,7 +363,7 @@ $('publish').onclick = async () => {
         select(invalidIndex);
 
         notify(
-            `Publication interrompue : « ${
+            `Enregistrement interrompu : « ${
                 rows[invalidIndex].name_en || 'Nouveau lieu'
             } » possède des champs obligatoires manquants.`,
             true
@@ -378,37 +373,33 @@ $('publish').onclick = async () => {
     }
 
     button.disabled = true;
-    button.textContent = 'Publication en cours…';
+    button.textContent = 'Enregistrement en cours…';
 
     try {
-        // 1. Sauvegarde du CSV.
         const saved = await request('/api/places', 'POST', {
             rows
         });
 
         dirty = false;
 
-        // 2. Génération des JSON.
-        const built = await request('/api/build', 'POST', {});
-
-        $('log').textContent = built.output;
-
-        notify(
-            `Publication terminée : ${saved.count} lignes enregistrées. ` +
-            'Recharge la carte publique pour voir les modifications.'
-        );
-
+        const data = await request('/api/places');
+        rows = data.rows;
+        refreshFilters();
+        renderList();
+        if (selected >= 0) select(selected, false);
+        $('log').textContent = `Sauvegarde SQLite : ${saved.backup}`;
+        notify(`${saved.count} lignes enregistrées dans SQLite.`);
     } catch (error) {
         $('log').textContent = error.message;
 
         notify(
-            `Publication interrompue : ${error.message}`,
+            `Enregistrement interrompu : ${error.message}`,
             true
         );
 
     } finally {
         button.disabled = false;
-        button.textContent = 'Enregistrer et publier';
+        button.textContent = 'Enregistrer';
     }
 };
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
