@@ -373,6 +373,7 @@ $('publish').onclick = async () => {
     }
 
     button.disabled = true;
+    $('build').disabled = true;
     button.textContent = 'Enregistrement en cours…';
 
     try {
@@ -399,7 +400,29 @@ $('publish').onclick = async () => {
 
     } finally {
         button.disabled = false;
+        $('build').disabled = false;
         button.textContent = 'Enregistrer';
+    }
+};
+$('build').onclick = async () => {
+    if (dirty) {
+        notify('Enregistre les modifications avant de générer la carte.', true);
+        return;
+    }
+    const button = $('build');
+    const saveButton = $('publish');
+    button.disabled = true;
+    saveButton.disabled = true;
+    try {
+        const built = await request('/api/build', 'POST', {});
+        $('log').textContent = built.output;
+        notify('Carte locale générée. Recharge la carte pour voir les modifications.');
+    } catch (error) {
+        $('log').textContent = error.message;
+        notify('La génération de la carte a échoué.', true);
+    } finally {
+        button.disabled = false;
+        saveButton.disabled = false;
     }
 };
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});

@@ -1,10 +1,13 @@
 
+import argparse
 import json
-import sqlite3
+import os
+from contextlib import closing
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
-ROOT = Path(__file__).resolve().parents[2]
-DB_PATH = ROOT / "data/db/guildwarscodex.db"
+from storage import DB_PATH, ROOT, connect
+
 OUTPUT_DIR = ROOT / "_backup/sqlite-export"
 
 
@@ -30,15 +33,51 @@ def number(value):
     return int(value) if float(value).is_integer() else value
 
 
+def publish(generated):
+    """Prépare toutes les sorties avant de remplacer les fichiers de la carte."""
+    with TemporaryDirectory(prefix=".sqlite-export-", dir=ROOT) as folder:
+        staging = Path(folder)
+        pending = []
+        for number, (relative, content) in enumerate(generated.items()):
+            target = ROOT / relative
+            original = target.read_bytes() if target.exists() else None
+            if original is not None and target.read_text(encoding="utf-8-sig") == content:
+                continue
+
+            staged = staging / f"{number}.new"
+            staged.write_text(content, encoding="utf-8", newline="\n")
+            previous = None
+            if original is not None:
+                previous = staging / f"{number}.old"
+                previous.write_bytes(original)
+            pending.append((staged, target, previous))
+
+        installed = []
+        try:
+            for staged, target, previous in pending:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(staged, target)
+                installed.append((target, previous))
+        except OSError:
+            for target, previous in reversed(installed):
+                if previous is None:
+                    target.unlink()
+                else:
+                    os.replace(previous, target)
+            raise
+
+        return len(installed)
+
+
 def main():
+    parser = argparse.ArgumentParser(description="Exporte les données SQLite de la carte.")
+    parser.add_argument("--publish", action="store_true", help="met à jour les JSON de la carte locale")
+    args = parser.parse_args()
     if not DB_PATH.is_file():
         raise SystemExit(f"Base SQLite introuvable : {DB_PATH}")
 
-    with sqlite3.connect(
-        f"file:{DB_PATH.as_posix()}?mode=ro",
-        uri=True
-    ) as db:
-        db.row_factory = sqlite3.Row
+    with closing(connect("ro")) as db:
+        db.execute("BEGIN")
 
         languages = [
             row["code"]
@@ -58,7 +97,15 @@ def main():
             SELECT p.realm_id, p.slug, t.language_code, t.name
             FROM translations t
             JOIN places p ON p.id = t.place_id
-            ORDER BY p.id
+            WHERE t.name != ''
+            ORDER BY p.id, t.language_code
+        """).fetchall()
+
+        realm_names = dict(db.execute("SELECT id, name_en FROM realms").fetchall())
+        realm_translations = db.execute("""
+            SELECT realm_id, language_code, name
+            FROM realm_translations WHERE name != ''
+            ORDER BY realm_id, language_code
         """).fetchall()
 
     items = {}
@@ -95,6 +142,10 @@ def main():
         names.setdefault(key, {})
         names[key][translation["slug"]] = translation["name"]
 
+    for translation in realm_translations:
+        key = (translation["language_code"], translation["realm_id"])
+        names.setdefault(key, {})["_realm"] = translation["name"]
+
     generated = {}
     differences = []
 
@@ -102,7 +153,11 @@ def main():
         (ROOT / "data/realms").glob("*/realm.json")
     ):
         realm = config_path.parent.name
-        config = json.loads(config_path.read_text(encoding="utf-8-sig"))
+        original_config = config_path.read_text(encoding="utf-8-sig")
+        config = json.loads(original_config)
+        if realm in realm_names and config["name"] != realm_names[realm]:
+            config["name"] = realm_names[realm]
+            generated[config_path.relative_to(ROOT)] = dumps_names(config)
 
         for category, definition in config["categories"].items():
             relative = Path("data/realms") / realm / definition["file"]
@@ -115,6 +170,12 @@ def main():
             generated[relative] = dumps_names(
                 names.get((language, realm), {})
             )
+
+    if args.publish:
+        changed = publish(generated)
+        print(f"Carte locale générée : {len(generated)} fichiers, {changed} mis à jour.")
+        print(f"Lieux exportés : {len(places)}")
+        return
 
     for relative, content in generated.items():
         output = OUTPUT_DIR / relative

@@ -1,5 +1,4 @@
 """Serveur d'édition local. Lancer depuis la racine : python tools/admin-server.py"""
-import csv
 import json
 import math
 import os
@@ -8,26 +7,19 @@ import re
 import subprocess
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from threading import Lock
 from urllib.parse import urlsplit
 
 from sqlite import storage
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV = ROOT / 'data/source/places.csv'
+BUILD_LOCK = Lock()
 PORT = int(os.environ.get('GW_ADMIN_PORT', '8765'))
 ID_RE = re.compile(r'^[a-z0-9]+(?:-[a-z0-9]+)*$')
 
 
 def configs():
     return {p.parent.name: json.loads(p.read_text(encoding='utf-8')) for p in (ROOT/'data/realms').glob('*/realm.json')}
-
-
-def load_csv_rows():
-    with CSV.open(encoding='utf-8-sig', newline='') as f:
-        reader = csv.DictReader(f, delimiter=';')
-        if not reader.fieldnames or not set(storage.COLUMNS).issubset(reader.fieldnames):
-            raise ValueError('Colonnes CSV inattendues : vérifie places.csv')
-        return [{k: (r.get(k) or '') for k in storage.COLUMNS} for r in reader if r.get('realm')]
 
 
 def validate(rows):
@@ -119,16 +111,16 @@ class Handler(SimpleHTTPRequestHandler):
             if path == '/api/places':
                 result = save_rows(payload.get('rows'))
                 return self.reply(200 if result['ok'] else 422, result)
-            errors = validate(load_csv_rows())
-            if errors:
-                return self.reply(422, {'ok': False, 'errors': errors})
-            # Snapshot des sorties afin de restaurer en cas d'échec de l'écriture.
-            targets = list((ROOT/'data/realms').glob('**/*.json')) + list((ROOT/'i18n').glob('*/names/*.json')) + [CSV]
-            snapshot = {p:p.read_bytes() for p in targets if p.exists()}
-            result = subprocess.run([sys.executable,'tools/build-data.py'], cwd=ROOT, capture_output=True, text=True, timeout=60)
-            if result.returncode:
-                for p, content in snapshot.items(): p.write_bytes(content)
-            return self.reply(200 if result.returncode == 0 else 422, {'ok':result.returncode == 0,'output':(result.stdout+'\n'+result.stderr)[-12000:]})
+            with BUILD_LOCK:
+                result = subprocess.run(
+                    [sys.executable, '-B', 'tools/sqlite/export-json.py', '--publish'],
+                    cwd=ROOT, capture_output=True, text=True,
+                    encoding='utf-8', env={**os.environ, 'PYTHONIOENCODING': 'utf-8'},
+                )
+            output = (result.stdout + '\n' + result.stderr).strip()
+            return self.reply(200 if result.returncode == 0 else 422, {
+                'ok': result.returncode == 0, 'output': output[-12000:],
+            })
         except (ValueError, TypeError, KeyError) as exc:
             return self.reply(400, {'error':str(exc)})
         except Exception as exc:
