@@ -2,5 +2,11 @@
   {"id": "boreal-station", "name": "Boreal Station", "x": 6387, "y": 2699, "minZoom": 2, "labelMinZoom": 3},
   {"id": "eye-of-the-north", "name": "Eye of the North", "x": 6282, "y": 2399, "minZoom": 2, "labelMinZoom": 3},
   {"id": "olafstead", "name": "Olafstead", "x": 5431, "y": 2174, "minZoom": 2, "labelMinZoom": 3},
-  {"id": "sifhalla", "name": "Sifhalla", "x": 5672, "y": 1378, "minZoom": 2, "labelMinZoom": 3}
+  {"id": "sifhalla", "name": "Sifhalla", "x": 5672, "y": 1378, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "vloxs-falls", "name": "Vlox's Falls", "x": 2794, "y": 5886, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "gadds-encampment", "name": "Gadd's Encampment", "x": 4120, "y": 6670, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "umbral-grotto", "name": "Umbral Grotto", "x": 4578, "y": 2428, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "tarnished-haven", "name": "Tarnished Haven", "x": 2280, "y": 6542, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "longeyes-ledge", "name": "Longeye's Ledge", "x": 6758, "y": 1608, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "central-transfer-chamber", "name": "Central Transfer Chamber", "x": 5916, "y": 3286, "minZoom": 2, "labelMinZoom": 3}
 ]

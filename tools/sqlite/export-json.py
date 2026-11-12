@@ -2,9 +2,9 @@
 import argparse
 import json
 import os
-from contextlib import closing
+from contextlib import closing, contextmanager
 from pathlib import Path
-from tempfile import TemporaryDirectory
+from uuid import uuid4
 
 from storage import DB_PATH, ROOT, connect
 
@@ -33,10 +33,22 @@ def number(value):
     return int(value) if float(value).is_integer() else value
 
 
+@contextmanager
+def staging_directory():
+    # A normal directory inherits the repository ACL on Windows.
+    directory = ROOT / f".sqlite-export-{uuid4().hex}"
+    directory.mkdir()
+    try:
+        yield directory
+    finally:
+        for file in directory.iterdir():
+            file.unlink()
+        directory.rmdir()
+
+
 def publish(generated):
     """Prépare toutes les sorties avant de remplacer les fichiers de la carte."""
-    with TemporaryDirectory(prefix=".sqlite-export-", dir=ROOT) as folder:
-        staging = Path(folder)
+    with staging_directory() as staging:
         pending = []
         for number, (relative, content) in enumerate(generated.items()):
             target = ROOT / relative

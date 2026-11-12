@@ -1,3 +1,4 @@
 [
-  {"id": "ascalon-arena", "name": "Ascalon Arena", "x": 7181, "y": 4577, "minZoom": 3, "labelMinZoom": 4}
+  {"id": "ascalon-arena", "name": "Ascalon Arena", "x": 7181, "y": 4577, "minZoom": 3, "labelMinZoom": 4},
+  {"id": "shiverpeak-arena", "name": "Shiverpeak Arena", "x": 5759, "y": 3505, "minZoom": 3, "labelMinZoom": 4}
 ]

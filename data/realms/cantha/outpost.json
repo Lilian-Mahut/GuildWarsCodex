@@ -1,1 +1,25 @@
-[]
+[
+  {"id": "senjis-corner", "name": "Senji's Corner", "x": 4236, "y": 17624, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "lutgardis-conservatory", "name": "Lutgardis Conservatory", "x": 4920, "y": 19104, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "vasburg-armory", "name": "Vasburg Armory", "x": 4952, "y": 19528, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "tsumei-village", "name": "Tsumei Village", "x": 2180, "y": 18698, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "seitung-harbor", "name": "Seitung Harbor", "x": 2824, "y": 18636, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "ran-musu-gardens", "name": "Ran Musu Gardens", "x": 2010, "y": 18264, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "harvest-temple", "name": "Harvest Temple", "x": 5642, "y": 19360, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "breaker-hollow", "name": "Breaker Hollow", "x": 5190, "y": 18310, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "leviathan-pits", "name": "Leviathan Pits", "x": 6004, "y": 18820, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "maatu-keep", "name": "Maatu Keep", "x": 4636, "y": 17882, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "zin-ku-corridor", "name": "Zin Ku Corridor", "x": 4856, "y": 17472, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "brauer-academy", "name": "Brauer Academy", "x": 4870, "y": 19264, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "durheim-archives", "name": "Durheim Archives", "x": 5264, "y": 19732, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "bai-paasu-reach", "name": "Bai Paasu Reach", "x": 5620, "y": 18056, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "seafarers-rest", "name": "Seafarer's Rest", "x": 6076, "y": 19144, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "the-marketplace", "name": "The Marketplace", "x": 3928, "y": 17258, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "tanglewood-copse", "name": "Tanglewood Copse", "x": 4604, "y": 18136, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "saint-anjekas-shrine", "name": "Saint Anjeka's Shrine", "x": 4580, "y": 19060, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "eredon-terrace", "name": "Eredon Terrace", "x": 5976, "y": 18062, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "aspenwood-gate-kurzick", "name": "Aspenwood Gate (Kurzick)", "x": 4882, "y": 18640, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "aspenwood-gate-luxon", "name": "Aspenwood Gate (Luxon)", "x": 4908, "y": 18380, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "jade-flats-kurzick", "name": "Jade Flats (Kurzick)", "x": 5214, "y": 18840, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "jade-flats-luxon", "name": "Jade Flats (Luxon)", "x": 5360, "y": 18540, "minZoom": 2, "labelMinZoom": 3}
+]

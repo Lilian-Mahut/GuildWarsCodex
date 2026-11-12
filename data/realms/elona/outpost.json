@@ -1,1 +1,17 @@
-[]
+[
+  {"id": "camp-hojanu", "name": "Camp Hojanu", "x": 8634, "y": 12384, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "wehhan-terraces", "name": "Wehhan Terraces", "x": 8640, "y": 11226, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "yohlon-haven", "name": "Yohlon Haven", "x": 7630, "y": 12326, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "chantry-of-secrets", "name": "Chantry of Secrets", "x": 8282, "y": 11180, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "mihanu-township", "name": "Mihanu Township", "x": 8476, "y": 10014, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "basalt-grotto", "name": "Basalt Grotto", "x": 7356, "y": 10046, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "honur-hill", "name": "Honur Hill", "x": 9018, "y": 10434, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "yahnur-market", "name": "Yahnur Market", "x": 8938, "y": 10850, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "sunspear-great-hall", "name": "Sunspear Great Hall", "x": 6062, "y": 12300, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "bone-palace", "name": "Bone Palace", "x": 6970, "y": 10160, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "lair-of-the-forgotten", "name": "Lair of the Forgotten", "x": 7220, "y": 9650, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "champions-dawn", "name": "Champion's Dawn", "x": 5910, "y": 12550, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "beknur-harbor", "name": "Beknur Harbor", "x": 5830, "y": 12866, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "kodlonu-hamlet", "name": "Kodlonu Hamlet", "x": 6382, "y": 12906, "minZoom": 2, "labelMinZoom": 3},
+  {"id": "the-astralarium", "name": "The Astralarium", "x": 5838, "y": 12188, "minZoom": 2, "labelMinZoom": 3}
+]

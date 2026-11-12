@@ -3,6 +3,7 @@
   "name": "Elona",
   "title": { "x": 7500, "y": 11500 },
   "categories": {
+    "arena":    { "file": "arena.json", "icon": { "file": "NF_Arena_Icon.png", "size": [65, 65] } },
     "gate":     { "file": "gate.json",  "icon": { "file": "Gate_Asura.png",  "size": [28, 28] } },
     "mission":  { "file": "mission.json",  "icon": { "file": "NF_Mission_Icon.png",  "size": [120, 120] } },
     "outpost":  { "file": "outpost.json",  "icon": { "file": "NF_Outpost_Icon.png",  "size": [65, 65] } },
