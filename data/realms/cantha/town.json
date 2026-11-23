@@ -1,6 +1,6 @@
 [
-  {"id": "shing-jea-monastery", "name": "Shing Jea Monastery", "x": 2516, "y": 18662, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "kaineng-center", "name": "Kaineng Center", "x": 3960, "y": 16804, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "houze-zu-heltzer", "name": "Houze zu Heltzer", "x": 4517, "y": 18715, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "cavalon", "name": "Cavalon", "x": 5451, "y": 18256, "minZoom": 1, "labelMinZoom": 2}
+  {"id": "shing-jea-monastery", "name": "Shing Jea Monastery", "x": 5153, "y": 36627, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "kaineng-center", "name": "Kaineng Center", "x": 8062, "y": 32914, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "houze-zu-heltzer", "name": "House zu Heltzer", "x": 9162, "y": 36729, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "cavalon", "name": "Cavalon", "x": 11045, "y": 35824, "minZoom": 0, "labelMinZoom": 0}
 ]

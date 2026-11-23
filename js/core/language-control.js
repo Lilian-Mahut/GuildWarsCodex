@@ -21,6 +21,10 @@ export function addLanguageControl(map) {
 
             const container = L.DomUtil.create('div', 'gw-lang');
             const button = L.DomUtil.create('button', 'gw-lang__button', container);
+            const label = L.DomUtil.create('span', 'gw-lang__label', button);
+            const currentName = L.DomUtil.create('span', 'gw-lang__name', label);
+            const currentDistrict = L.DomUtil.create('span', 'gw-lang__district', label);
+            currentDistrict.textContent = '- Active District';
             const menu = L.DomUtil.create('div', 'gw-lang__menu', container);
 
             button.type = 'button';
@@ -38,14 +42,14 @@ export function addLanguageControl(map) {
                     lang => lang.code === getCurrentLanguage()
                 );
 
-                button.textContent = `${current?.label ?? 'English'} ▾`;
+                currentName.textContent = current?.label ?? 'English';
                 button.setAttribute('aria-label', t('language'));
 
                 menu.querySelectorAll('button').forEach(option => {
-                    option.classList.toggle(
-                        'is-active',
-                        option.dataset.lang === getCurrentLanguage()
-                    );
+                    const active = option.dataset.lang === getCurrentLanguage();
+                    option.classList.toggle('is-active', active);
+                    option.querySelector('.gw-lang__district').textContent = active ? '- Active District' : '- District 1';
+                    if (active) menu.prepend(option);
                 });
             };
 
@@ -66,7 +70,10 @@ export function addLanguageControl(map) {
 
                 option.type = 'button';
                 option.dataset.lang = lang.code;
-                option.textContent = lang.label;
+                option.dataset.label = lang.label;
+                const optionName = L.DomUtil.create('span', 'gw-lang__name', option);
+                optionName.textContent = lang.label;
+                L.DomUtil.create('span', 'gw-lang__district', option);
 
                 option.addEventListener('click', async () => {
                     close();
@@ -81,6 +88,11 @@ export function addLanguageControl(map) {
                 }
             });
 
+            this._onOutsideClick = event => {
+                if (!container.contains(event.target)) close();
+            };
+            document.addEventListener('click', this._onOutsideClick, true);
+
             L.DomEvent.disableClickPropagation(container);
             L.DomEvent.disableScrollPropagation(container);
 
@@ -88,6 +100,10 @@ export function addLanguageControl(map) {
             refresh();
 
             return container;
+        },
+
+        onRemove() {
+            document.removeEventListener('click', this._onOutsideClick, true);
         }
     });
 

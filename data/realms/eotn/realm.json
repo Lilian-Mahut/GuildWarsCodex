@@ -2,29 +2,38 @@
   "id": "eotn",
   "name": "Eye of the North",
   "title": {
-    "x": 5700,
-    "y": 1500
+    "x": 13000,
+    "y": 3500
   },
   "categories": {
     "dungeon": {
       "file": "dungeon.json",
       "icon": {
         "file": "Dungeon_Icon.png",
-        "size": [32, 32]
+        "size": [
+          32,
+          32
+        ]
       }
     },
     "mission": {
       "file": "mission.json",
       "icon": {
         "file": "Mission_Icon.png",
-        "size": [64, 64]
+        "size": [
+          64,
+          64
+        ]
       }
     },
     "outpost": {
       "file": "outpost.json",
       "icon": {
         "file": "Outpost_Icon.png",
-        "size": [25, 25]
+        "size": [
+          25,
+          25
+        ]
       }
     },
     "region": {
@@ -34,7 +43,10 @@
       "file": "town.json",
       "icon": {
         "file": "Town_Icon.png",
-        "size": [57, 57]
+        "size": [
+          57,
+          57
+        ]
       }
     },
     "zone": {

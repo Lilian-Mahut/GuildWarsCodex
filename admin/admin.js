@@ -1,5 +1,7 @@
 import { loadWorld } from '../js/core/loader.js';
 import { initMap } from '../js/core/map.js';
+import { addMarkers } from '../js/core/markers.js';
+import { initI18n } from '../js/core/i18n.js';
 
 const $ = (id) => document.getElementById(id);
 const form = $('editor');
@@ -106,9 +108,11 @@ function filtered() {
 function validPoint(r){return r.category!=='_realm' && r.x!=='' && r.y!=='' && Number.isFinite(Number(r.x))&&Number.isFinite(Number(r.y));}
 function renderPins(){
     pinLayer.clearLayers();
+    if (map.getZoom() === 0) return;
     const visible=filtered();
     visible.forEach(({r,i})=>{
         if(!validPoint(r))return;
+        if (map.getZoom() === 1 && !world.layers[r.category]?.visibleAtZoomOne) return;
         const icon=L.divIcon({className:'',html:`<div class="admin-point ${i===selected?'selected':''}"></div>`,iconSize:[20,20],iconAnchor:[10,10]});
         L.marker(map.unproject([Number(r.x),Number(r.y)],world.maxZoom),{icon,title:r.name_en||'Lieu',draggable:i===selected})
           .on('click',e=>{L.DomEvent.stopPropagation(e);select(i);})
@@ -241,12 +245,21 @@ async function init(){
     try{
         const [data,loadedWorld]=await Promise.all([request('/api/places'),loadWorld()]);
         rows=data.rows;realms=data.realms;world=loadedWorld;
+        await initI18n(world.realms.map(realm => realm.id));
         map = initMap(world);
+        addMarkers(map, {
+            ...world,
+            realms: world.realms.map(realm => ({
+                ...realm,
+                categories: { realm: realm.categories.realm }
+            }))
+        });
 
         // Supprime les boutons de zoom uniquement s'ils existent.
         map.zoomControl?.remove();
 
         pinLayer = L.layerGroup().addTo(map);
+        map.on('zoomend', renderPins);
         options(form.elements.realm,Object.keys(realms));updateCategories();refreshFilters();renderList();
         if(rows.length)select(0,false);
         map.on('click',e=>{
@@ -337,7 +350,7 @@ document.addEventListener('keydown',e=>{
 });
 $('locate').onclick=()=>{
     const r=rows[selected];if(!r||!validPoint(r))return notify('Coordonnées manquantes.',true);
-    map.setView(map.unproject([Number(r.x),Number(r.y)],world.maxZoom),Math.max(map.getZoom(),2));
+    map.setView(map.unproject([Number(r.x),Number(r.y)],world.maxZoom),Math.max(map.getZoom(),world.minZoom));
 };
 $('publish').onclick = async () => {
     const button = $('publish');

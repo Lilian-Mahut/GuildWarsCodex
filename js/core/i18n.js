@@ -1,5 +1,6 @@
 // Gestion des langues : détection, chargement, traduction des textes et des noms de lieux
 import { fetchJson, fetchJsonOptional } from './http.js';
+import { toBork } from './bork.js';
 
 const FALLBACK = 'en';
 const STORAGE_KEY = 'lang';
@@ -35,7 +36,7 @@ function detectLanguage() {
 }
 
 async function loadLanguage(code) {
-    const uiData = await fetchJsonOptional(`i18n/${code}/ui.json`);
+    const uiData = code === 'bork' ? {} : await fetchJsonOptional(`i18n/${code}/ui.json`);
     const nameData = {};
 
     // En anglais, le champ "name" des JSON fait foi : pas de fichier de noms
@@ -80,12 +81,15 @@ export async function setLanguage(code) {
 
 // Texte d'interface : langue courante, sinon anglais, sinon la clé
 export function t(key) {
-    return ui[key] ?? uiFallback[key] ?? key;
+    const text = ui[key] ?? uiFallback[key] ?? key;
+    return current === 'bork' ? toBork(text) : text;
 }
 
 // Nom d'un lieu : traduction par id, sinon le "name" du JSON (anglais)
 export function getName(realmId, item) {
-    return names[realmId]?.[item.id] ?? item.name;
+    const translated = names[realmId]?.[item.id];
+    if (translated !== undefined) return translated;
+    return current === 'bork' ? toBork(item.name) : item.name;
 }
 
 export const getLanguages = () => languages;

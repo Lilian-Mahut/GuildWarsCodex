@@ -1,44 +1,86 @@
-
 .gw-lang {
     position: relative;
-    min-width: 170px;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #e9d7a5;
+    width: 242px;
+    max-width: calc(100vw - 24px);
+    color: #f3f3ef;
+    font: 11px/14px Verdana, Arial, sans-serif;
+    text-shadow: 1px 1px 1px #000;
 }
 
 .gw-lang__button {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
     width: 100%;
-    padding: 9px 14px;
-    color: #ead8a6;
-    background: linear-gradient(
-        180deg,
-        rgba(63, 53, 38, .97),
-        rgba(19, 17, 14, .97)
-    );
-    border: 1px solid #9a7c43;
-    box-shadow: inset 0 0 8px #000, 0 3px 10px #0008;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+    background: linear-gradient(180deg, #b5bec9 0%, #8597af 12%, #697f99 24%, #526981 47%, #43576f 63%, #566b82 78%, #3d4e65 90%, #111722 100%);
+    box-shadow: 0 1px 2px #000b, 0 0 2px #0009;
+    color: inherit;
     font: inherit;
+    text-shadow: inherit;
     text-align: left;
     cursor: pointer;
+    isolation: isolate;
 }
 
-.gw-lang__button:hover,
-.gw-lang__button:focus-visible {
-    color: #fff2c5;
-    border-color: #d5ad5d;
+/* Les bords et le bouton-flèche proviennent de la capture GW1.
+   Le masque conserve le cadre et élimine le texte de la capture. */
+.gw-lang__button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: url('../assets/shared/ui/district-panel.jpg') left top / 100% auto no-repeat;
+    mask-image:
+        linear-gradient(90deg, #000 0 8px, transparent 8px calc(100% - 29px), #000 calc(100% - 29px)),
+        linear-gradient(180deg, #000 0 4px, transparent 4px 18px, #000 18px);
+    mask-composite: add;
+    pointer-events: none;
+}
+
+.gw-lang__label {
+    position: relative;
+    display: block;
+    padding: 0 32px 0 13px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 22px;
+    z-index: 1;
+}
+
+.gw-lang__button:hover {
+    box-shadow: 0 1px 3px #000c, inset 0 0 4px #d3e2f126;
+}
+
+.gw-lang__button:focus-visible,
+.gw-lang__option:focus-visible {
+    outline: 1px solid #d7e1ec;
+    outline-offset: -3px;
 }
 
 .gw-lang__menu {
     position: absolute;
-    top: calc(100% + 2px);
-    right: 0;
-    width: 100%;
-    max-height: 320px;
+    top: 20px;
+    right: 6px;
+    left: 6px;
+    box-sizing: border-box;
+    padding: 3px 2px 4px;
+    max-height: min(320px, 65vh);
     overflow-y: auto;
-    background: rgba(20, 18, 15, .98);
-    border: 1px solid #9a7c43;
-    box-shadow: 0 6px 18px #000a;
+    border: 1px solid #6c6d67;
+    border-top-color: #171b22;
+    border-left-color: #414640;
+    border-right-color: #858780;
+    border-radius: 0 0 4px 4px;
+    background: rgba(23, 24, 20, .97);
+    box-shadow: inset 1px 0 2px #0008, inset -1px -1px 1px #b1b1a72e, 1px 2px 3px #000b;
     z-index: 1000;
+    scrollbar-width: thin;
+    scrollbar-color: #7b838a #1b1d1b;
 }
 
 .gw-lang__menu[hidden] {
@@ -47,28 +89,33 @@
 
 .gw-lang__option {
     display: block;
+    box-sizing: border-box;
     width: 100%;
-    padding: 9px 12px;
+    min-height: 14px;
+    padding: 0 4px;
     border: 0;
-    border-bottom: 1px solid #ffffff12;
+    border-radius: 0;
     background: transparent;
-    color: #c9b992;
+    color: #efefeb;
     font: inherit;
+    line-height: 14px;
+    text-shadow: inherit;
     text-align: left;
     cursor: pointer;
 }
 
-.gw-lang__option:hover,
-.gw-lang__option:focus-visible {
-    background: linear-gradient(
-        90deg,
-        #765a2e,
-        #302619
-    );
-    color: #fff4cc;
+.gw-lang__option.is-active {
+    color: #fff;
 }
 
-.gw-lang__option.is-active {
-    color: #f7d78b;
-    background: #4c3b23;
+.gw-lang__option:hover,
+.gw-lang__option:focus-visible {
+    border-radius: 2px;
+    background: linear-gradient(180deg, #6a7889a6, #405064b3);
+    box-shadow: inset 0 1px 0 #c0cad738, inset 0 -1px 0 #151d2b80;
+    color: #fff;
+}
+
+.gw-lang__district::before {
+    content: ' ';
 }

@@ -5,6 +5,8 @@ export function getIconScale(zoom, world) {
 }
 
 export function isVisible(zoom, rule, item) {
+    if (zoom === 0 && !rule.overview) return false;
+    if (zoom === 1 && !rule.visibleAtZoomOne) return false;
     const min = item.minZoom ?? rule.minZoom ?? 0;
     const max = rule.maxZoom ?? Infinity;
     return zoom >= min && zoom <= max;
@@ -16,5 +18,6 @@ export function hasLabel(rule, item) {
 }
 
 export function isLabelVisible(zoom, rule, item) {
+    if (zoom === 1 || rule.hiddenLabelZooms?.includes(zoom)) return false;
     return hasLabel(rule, item) && zoom >= (item.labelMinZoom ?? rule.labelMinZoom);
 }

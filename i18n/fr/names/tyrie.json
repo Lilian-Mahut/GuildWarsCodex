@@ -8,6 +8,7 @@
   "dalessio-seaboard": "Côte d'Alessio",
   "ascalon-arena": "Arène d'Ascalon",
   "shiverpeak-arena": "Arène des Cimefroides",
+  "ember-light-camp": "Campement des Brasiers ardents",
   "grendich-courthouse": "Tribunal de Grendich",
   "augury-rock": "Roche de l'Augure",
   "sardelac-sanitarium": "Sanatorium de Sardelac",
@@ -15,7 +16,13 @@
   "bergen-hot-springs": "Sources chaudes de Bergen",
   "tomb-of-the-primeval-kings": "Tombeau des Rois Primitifs",
   "serenity-temple": "Temple de la Sérénité",
+  "ice-tooth-cave": "Caverne du Croc de Glace",
+  "beacons-perch": "Promontoire",
+  "yaks-bend": "Descente du Yak",
   "frontier-gate": "Porte Frontière",
+  "beetletun": "Beetletun",
+  "fishermens-haven": "Havre des Pêcheurs",
+  "temple-of-the-ages": "Temple des Ages",
   "ventaris-refuge": "Refuge de Ventari",
   "druids-overlook": "Eperon des Druides",
   "maguuma-stade": "Clairière de Maguuma",
@@ -28,5 +35,6 @@
   "marhans-grotto": "Caverne de Marhan",
   "port-sledge": "Port Briska",
   "copperhammer-mines": "Mines de Mailletcuivré",
-  "deldrimor-war-camp": "Camp militaire de Deldrimor"
+  "deldrimor-war-camp": "Camp militaire de Deldrimor",
+  "_realm": "Tyrie"
 }

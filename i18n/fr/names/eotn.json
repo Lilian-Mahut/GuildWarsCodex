@@ -1,10 +1,19 @@
 {
+  "rata-sum": "Rata Sum",
   "gunnars-hold": "Campement de Gunnar",
-  "doomlore-shrine": "Sanctuaire de la Légende funeste",
+  "doomlore-shrine": "Sanctuaire de la légende funeste",
   "boreal-station": "Station boréale",
-  "eye-of-the-north": "Œil du Nord",
-  "olafstead": "Bourg d'Olaf",
+  "eye-of-the-north": "Oeil du Nord",
+  "olafstead": "Domaine d'Olaf",
+  "sifhalla": "Sifhalla",
   "drakkar-lake": "Lac Drakkar",
-  "curse-of-the-nornbear": "Malédiction de l'Ours norn",
-  "sepulchre-of-dragrimmar": "Sépulcre de Dragrimmar"
+  "curse-of-the-nornbear": "La malédiction de l'ours norn",
+  "sepulchre-of-dragrimmar": "Sépulcre de Dragrimmar",
+  "vloxs-falls": "Chutes de Vlox",
+  "gadds-encampment": "Campement de Gadd",
+  "umbral-grotto": "Grotte obscure",
+  "tarnished-haven": "Havre Terni",
+  "longeyes-ledge": "Coteau de Longoeil",
+  "central-transfer-chamber": "Chambre de transfert principale",
+  "_realm": "Eye of the North"
 }

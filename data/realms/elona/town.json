@@ -1,6 +1,6 @@
 [
-  {"id": "kamadan-jewel-of-istan", "name": "Kamadan, Jewel of Istan", "x": 6271, "y": 12445, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "sunspear-sanctuary", "name": "Sunspear Sanctuary", "x": 7638, "y": 11740, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "the-kodash-bazaar", "name": "The Kodash Bazaar", "x": 8548, "y": 10462, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "the-mouth-of-torment", "name": "The Mouth of Torment", "x": 6586, "y": 9831, "minZoom": 1, "labelMinZoom": 2}
+  {"id": "kamadan-jewel-of-istan", "name": "Kamadan, Jewel of Istan", "x": 12532, "y": 24878, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "sunspear-sanctuary", "name": "Sunspear Sanctuary", "x": 15342, "y": 23467, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "the-kodash-bazaar", "name": "The Kodash Bazaar", "x": 17136, "y": 20931, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "the-mouth-of-torment", "name": "The Mouth of Torment", "x": 13212, "y": 19659, "minZoom": 0, "labelMinZoom": 0}
 ]

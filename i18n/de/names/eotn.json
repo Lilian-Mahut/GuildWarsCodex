@@ -1,10 +1,18 @@
 {
+  "rata-sum": "Rata Sum",
   "gunnars-hold": "Gunnars Feste",
-  "doomlore-shrine": "Schrein des Unheils",
-  "boreal-station": "Borealstation",
+  "doomlore-shrine": "Schrein des Schicksalswissens",
+  "boreal-station": "Nördliche Station",
   "eye-of-the-north": "Auge des Nordens",
-  "olafstead": "Olafheim",
+  "olafstead": "Olafsheim",
+  "sifhalla": "Sifhalla",
   "drakkar-lake": "Drakkar-See",
-  "curse-of-the-nornbear": "Fluch des Nornbären",
-  "sepulchre-of-dragrimmar": "Dragrimmars Grab"
+  "curse-of-the-nornbear": "Der Fluch des Nornbären",
+  "sepulchre-of-dragrimmar": "Grabkammer des Dragrimmar",
+  "vloxs-falls": "Vlox-Fälle",
+  "gadds-encampment": "Gadds Lager",
+  "umbral-grotto": "Umbralgrotte",
+  "tarnished-haven": "Trübwinkel",
+  "longeyes-ledge": "Scharfauges Anhöhe",
+  "central-transfer-chamber": "Zentrale Transferkammer"
 }

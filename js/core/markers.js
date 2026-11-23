@@ -7,7 +7,17 @@ const SHARED_ICONS = 'assets/shared/icons/';
 function setEntryName(entry) {
     const name = getName(entry.realm.id, entry.item);
 
-    if (entry.labelEl) entry.labelEl.textContent = name;
+    if (entry.labelEl) {
+        const isIslesTitle = entry.realm.id === 'zaishen' && entry.item.id === '_realm';
+        let label = name;
+        if (isIslesTitle) {
+            label = name.replace(/^Iles\s+Antagonistes$/i, 'Iles\nAntagonistes');
+        }
+        if (entry.realm.id === 'eotn' && entry.item.id === '_realm') {
+            label = name.replace(/\s+north$/i, '\nnorth');
+        }
+        entry.labelEl.textContent = label;
+    }
     if (entry.imgEl) entry.imgEl.alt = name;
 
     const tooltip = entry.marker.getTooltip();
@@ -22,7 +32,8 @@ function createEntry(map, world, realm, category, def, rule, item) {
     const iconDef = item.icon ?? def.icon ?? rule.icon;
     const iconsPath = (item.icon || def.icon) ? realm.iconsPath : SHARED_ICONS;
 
-    const size = isText ? [0, 0] : (category === 'gate' ? [64, 64] : iconDef.size);
+    // Référence commune : icône des Chutes de Vlox, 25 × 25 px.
+    const size = isText ? [0, 0] : [25, 25];
     const half = size[1] / 2;
 
     const classes = [
@@ -60,7 +71,7 @@ const imgHtml = isText
 
     const root = marker.getElement();
     const entry = {
-        marker, realm, iconDef, rule, item, isText,
+        marker, realm, category, size, root, iconDef, rule, item, isText,
         el: root.querySelector('.gw-item'),
         imgEl: root.querySelector('.gw-icon'),
         labelEl: root.querySelector('.gw-label')
@@ -75,7 +86,16 @@ function applyZoom(entries, world, zoom) {
     const scale = getIconScale(zoom, world);
 
     entries.forEach((e) => {
-        e.el.style.setProperty('--s', scale);
+        const zoomSize = e.rule.iconSizes?.[zoom];
+        const [width, height] = zoomSize ? [zoomSize, zoomSize] : e.size;
+        const iconScale = scale;
+
+        e.root.style.width = `${width}px`;
+        e.root.style.height = `${height}px`;
+        e.root.style.marginLeft = `${-width / 2}px`;
+        e.root.style.marginTop = `${-height / 2}px`;
+        e.el.style.setProperty('--half', `${height / 2}px`);
+        e.el.style.setProperty('--s', iconScale);
         e.el.classList.toggle('is-hidden', !isVisible(zoom, e.rule, e.item));
 
         if (e.isText) return;   // pas d'icône ni de tooltip pour le texte seul
@@ -94,7 +114,7 @@ function applyZoom(entries, world, zoom) {
                 });
             }
             e.marker.getTooltip().options.offset =
-                L.point(0, (e.iconDef.size[1] * scale) / 2);
+                L.point(0, (height * iconScale) / 2);
         }
     });
 }

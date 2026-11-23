@@ -1,7 +1,7 @@
 [
-  {"id": "ascalon-city", "name": "Ascalon City", "x": 7104, "y": 4537, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "lions-gate", "name": "Lion's Gate", "x": 3960, "y": 4806, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "henge-of-denravi", "name": "Henge of Denravi", "x": 1713, "y": 5247, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "the-amnoon-oasis", "name": "The Amnoon Oasis", "x": 6243, "y": 7827, "minZoom": 1, "labelMinZoom": 2},
-  {"id": "droknars-forge", "name": "Droknar's Forge", "x": 5174, "y": 6541, "minZoom": 1, "labelMinZoom": 2}
+  {"id": "ascalon-city", "name": "Ascalon City", "x": 14231, "y": 9052, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "lions-gate", "name": "Lion's Arch", "x": 7930, "y": 9602, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "henge-of-denravi", "name": "Henge of Denravi", "x": 3418, "y": 10494, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "the-amnoon-oasis", "name": "The Amnoon Oasis", "x": 12416, "y": 16128, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "droknars-forge", "name": "Droknar's Forge", "x": 10361, "y": 13083, "minZoom": 0, "labelMinZoom": 0}
 ]

@@ -1,10 +1,17 @@
 {
+  "rata-sum": "Rata Sum",
   "gunnars-hold": "Campamento de Gunnar",
-  "doomlore-shrine": "Santuario de la Leyenda Funesta",
+  "doomlore-shrine": "Santuario maldito",
   "boreal-station": "Estación Boreal",
   "eye-of-the-north": "Ojo del Norte",
-  "olafstead": "Aldea de Olaf",
-  "drakkar-lake": "Lago Drakkar",
-  "curse-of-the-nornbear": "Maldición del Oso Norn",
-  "sepulchre-of-dragrimmar": "Sepulcro de Dragrimmar"
+  "olafstead": "Paraje de Olaf",
+  "sifhalla": "Sifhalla",
+  "drakkar-lake": "Lago de Drakkar",
+  "curse-of-the-nornbear": "La maldición del Osonorn",
+  "sepulchre-of-dragrimmar": "Sepulcro de Dragrimmar",
+  "vloxs-falls": "Cataratas de Vlox",
+  "gadds-encampment": "Acampamento de Gadd",
+  "umbral-grotto": "Gruta Sombría",
+  "tarnished-haven": "Refugio Tiznado",
+  "longeyes-ledge": "Cornisa de Ojolargo"
 }
