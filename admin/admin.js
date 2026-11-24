@@ -9,7 +9,13 @@ let rows = [], realms = {}, selected = -1, picking = false, dirty = false, map, 
 let positionHistory = []; const NEAR_DISTANCE = 12;
 const keys = ['realm','category','id','name_en','x','y','name_fr','name_es','name_de','minZoom','labelMinZoom','label'];
 const notify = (message, error=false) => { $('notice').textContent=message; $('notice').classList.toggle('error',error); };
-function options(select, values, placeholder = '') {
+const categoryLabels = {
+    collector: 'Collectionneur',
+    'armor-collector': 'Collectionneur d’armure',
+    'resurrection-shrine': 'Sanctuaire de résurrection',
+};
+
+function options(select, values, placeholder = '', labels = {}) {
     const current = select.value;
 
     select.replaceChildren();
@@ -19,7 +25,7 @@ function options(select, values, placeholder = '') {
     }
 
     values.forEach(value => {
-        select.add(new Option(value, value));
+        select.add(new Option(labels[value] ?? value, value));
     });
 
     if ([...select.options].some(option => option.value === current)) {
@@ -35,13 +41,14 @@ function updateCategories() {
     options(
         form.elements.category,
         realms[realm] || [],
-        '— Choisir une catégorie —'
+        '— Choisir une catégorie —',
+        categoryLabels
     );
 }
 function refreshFilters(){
     options($('realmFilter'),Object.keys(realms),'Tous les royaumes');
     const categories = $('realmFilter').value ? realms[$('realmFilter').value] : [...new Set(Object.values(realms).flat())].sort();
-    options($('categoryFilter'),categories||[],'Toutes les catégories');
+    options($('categoryFilter'),categories||[],'Toutes les catégories',categoryLabels);
 }
 function isIncomplete(r, kind) {
     if (kind === 'missing-coords') return r.category !== '_realm' && !validPoint(r);
@@ -113,7 +120,18 @@ function renderPins(){
     visible.forEach(({r,i})=>{
         if(!validPoint(r))return;
         if (map.getZoom() === 1 && !world.layers[r.category]?.visibleAtZoomOne) return;
-        const icon=L.divIcon({className:'',html:`<div class="admin-point ${i===selected?'selected':''}"></div>`,iconSize:[20,20],iconAnchor:[10,10]});
+        const realm = world.realms.find(({ id }) => id === r.realm);
+        const categoryIcon = categoryLabels[r.category] && realm?.categories[r.category]?.icon;
+        const pin = document.createElement(categoryIcon ? 'img' : 'div');
+        pin.classList.toggle('selected', i === selected);
+        if (categoryIcon) {
+            pin.classList.add('admin-category-icon');
+            pin.src = realm.iconsPath + categoryIcon.file;
+            pin.alt = '';
+        } else {
+            pin.classList.add('admin-point');
+        }
+        const icon = L.divIcon({ className: '', html: pin, iconSize: [20, 20], iconAnchor: [10, 10] });
         L.marker(map.unproject([Number(r.x),Number(r.y)],world.maxZoom),{icon,title:r.name_en||'Lieu',draggable:i===selected})
           .on('click',e=>{L.DomEvent.stopPropagation(e);select(i);})
           .on('dragstart',()=>{positionHistory.push({i,x:r.x,y:r.y});})

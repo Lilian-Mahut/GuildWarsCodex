@@ -6,6 +6,36 @@
     "y": 3500
   },
   "categories": {
+    "collector": {
+      "file": "collector.json",
+      "icon": {
+        "file": "Collector_Icon.png",
+        "size": [
+          18,
+          18
+        ]
+      }
+    },
+    "armor-collector": {
+      "file": "armor-collector.json",
+      "icon": {
+        "file": "Collector_Armor_Icon.png",
+        "size": [
+          18,
+          18
+        ]
+      }
+    },
+    "resurrection-shrine": {
+      "file": "resurrection-shrine.json",
+      "icon": {
+        "file": "Resurrection_Shrine_icon.png",
+        "size": [
+          28,
+          27
+        ]
+      }
+    },
     "dungeon": {
       "file": "dungeon.json",
       "icon": {

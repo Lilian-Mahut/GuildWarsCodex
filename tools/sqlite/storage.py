@@ -162,7 +162,7 @@ def save_place(db, row):
             """, (place_id, language, name))
 
 
-def save_rows(rows):
+def save_rows(rows, realm_configs):
     """Enregistre un instantané validé et sauvegarde la base avant modification."""
     rows = [{key: str(row.get(key, "")).strip() for key in COLUMNS} for row in rows]
     assign_ids(rows)
@@ -172,6 +172,13 @@ def save_rows(rows):
     with closing(connect("rw")) as db, db:
         db.execute("BEGIN IMMEDIATE")
         backup_path = backup_database()
+        db.executemany(
+            "INSERT INTO categories (realm_id, id, file_path) VALUES (?, ?, ?) "
+            "ON CONFLICT(realm_id, id) DO NOTHING",
+            [(realm, category, definition["file"])
+             for realm, config in realm_configs.items()
+             for category, definition in config["categories"].items()],
+        )
         removed = [
             (row["id"],) for row in db.execute("SELECT id, realm_id, slug FROM places")
             if (row["realm_id"], row["slug"]) not in kept

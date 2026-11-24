@@ -72,7 +72,7 @@ def save_rows(rows):
     errors = validate(rows)
     if errors:
         return {'ok': False, 'errors': errors}
-    backup_path = storage.save_rows(rows)
+    backup_path = storage.save_rows(rows, configs())
     return {'ok': True, 'count': len(rows), 'backup': backup_path.name}
 
 

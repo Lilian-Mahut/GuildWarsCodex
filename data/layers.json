@@ -8,6 +8,21 @@
     1
   ],
   "layers": {
+    "collector": {
+      "kind": "icon",
+      "minZoom": 4,
+      "labelMinZoom": 5
+    },
+    "armor-collector": {
+      "kind": "icon",
+      "minZoom": 4,
+      "labelMinZoom": 5
+    },
+    "resurrection-shrine": {
+      "kind": "icon",
+      "minZoom": 4,
+      "labelMinZoom": 5
+    },
     "arena": {
       "kind": "icon",
       "minZoom": 1,
