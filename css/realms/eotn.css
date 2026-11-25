@@ -1,13 +1,5 @@
-.realm-eotn .gw-label, .leaflet-tooltip.realm-eotn {
-    font-family: "RealmFont", serif;
-}
-
-.realm-eotn .gw-label  {
-    color: #f3d9a4;
-}
-
 .realm-eotn.cat-realm  .gw-label {
-    font-size: 26px; letter-spacing: 4px; text-transform: uppercase;
+    font-size: 26px; letter-spacing: 4px;
     white-space: pre;
     text-align: center;
     width: max-content;

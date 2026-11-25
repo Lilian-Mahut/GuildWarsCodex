@@ -1,3 +1,13 @@
 [
-  {"id": "curse-of-the-nornbear", "name": "Curse of the Nornbear", "x": 10971, "y": 2831, "minZoom": 0, "labelMinZoom": 1}
+  {"id": "curse-of-the-nornbear", "name": "Curse of the Nornbear", "x": 10971, "y": 2831, "minZoom": 0, "labelMinZoom": 1},
+  {"id": "destructions-depths", "name": "Destruction's Depths", "x": 11933, "y": 4838, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "blood-washes-blood", "name": "Blood Washes Blood", "x": 13018, "y": 2551, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "a-gate-too-far", "name": "A Gate Too Far", "x": 10339, "y": 3826, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "a-time-for-heroes", "name": "A Time for Heroes", "x": 12232, "y": 6777, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "against-the-charr", "name": "Against the Charr", "x": 14204, "y": 3509, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "warband-of-brothers", "name": "Warband of Brothers", "x": 14768, "y": 2531, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "assault-on-the-stronghold", "name": "Assault on the Stronghold", "x": 15125, "y": 3822, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "g-o-l-e-m", "name": "G.O.L.E.M.", "x": 3798, "y": 11721, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-elusive-golemancer", "name": "The Elusive Golemancer", "x": 2509, "y": 12154, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "finding-the-bloodstone", "name": "Finding the Bloodstone", "x": 8715, "y": 13529, "minZoom": 2, "labelMinZoom": 3, "label": true}
 ]

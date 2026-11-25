@@ -1,7 +1,6 @@
 [
   {"id": "ember-light-camp", "name": "Ember Light Camp", "x": 3970, "y": 15536, "minZoom": 0, "labelMinZoom": 0},
   {"id": "grendich-courthouse", "name": "Grendich Courthouse", "x": 12432, "y": 7997, "minZoom": 0, "labelMinZoom": 0},
-  {"id": "augury-rock", "name": "Augury Rock", "x": 13444, "y": 16197, "minZoom": 0, "labelMinZoom": 0},
   {"id": "sardelac-sanitarium", "name": "Sardelac Sanitarium", "x": 13640, "y": 9360, "minZoom": 0, "labelMinZoom": 0},
   {"id": "piken-square", "name": "Piken Square", "x": 13759, "y": 8522, "minZoom": 0, "labelMinZoom": 0},
   {"id": "bergen-hot-springs", "name": "Bergen Hot Springs", "x": 7192, "y": 9256, "minZoom": 0, "labelMinZoom": 0},

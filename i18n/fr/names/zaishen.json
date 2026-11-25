@@ -1,15 +1,16 @@
 {
-  "great-temple-of-balthazar": "Grand Temple de Balthazar",
+  "great-temple-of-balthazar": "Grand temple de Balthazar",
   "random-arenas": "Arènes aléatoires",
   "codex-arena": "Arène du codex",
-  "heroes-ascent": "Ascension des Héros",
+  "heroes-ascent": "Ascension des héros",
   "zaishen-challenge": "Défi Zaishen",
-  "isle-of-the-nameless": "Ile des Inconnus",
+  "isle-of-the-nameless": "Île des inconnus",
   "zaishen-elite": "Elite zaishen",
-  "zaishen-menagerie-grounds": "Parc de la Ménagerie Zaishen",
+  "zaishen-menagerie-grounds": "Parc de la ménagerie Zaishen",
   "guild-hall": "Hall de guilde",
   "zaishen-menagerie": "Ménagerie Zaishen",
-  "forbidden-path": "Sentier Interdit",
+  "forbidden-path": "Sentier interdit",
   "embark-beach": "Plage de l'embarquement",
-  "_realm": "Iles Antagonistes"
+  "battle-isles": "Îles antagonistes",
+  "_realm": "Îles antagonistes"
 }

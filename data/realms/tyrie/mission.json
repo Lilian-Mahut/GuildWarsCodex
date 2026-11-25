@@ -1,3 +1,27 @@
 [
-  {"id": "dalessio-seaboard", "name": "D'Alessio Seaboard", "x": 7573, "y": 9757, "minZoom": 0, "labelMinZoom": 0}
+  {"id": "dalessio-seaboard", "name": "D'Alessio Seaboard", "x": 7573, "y": 9757, "minZoom": 0, "labelMinZoom": 0},
+  {"id": "augury-rock", "name": "Augury Rock", "x": 13444, "y": 16197, "minZoom": 0, "labelMinZoom": 3},
+  {"id": "fort-ranik", "name": "Fort Ranik", "x": 14850, "y": 9714, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-great-northern-wall", "name": "The Great Northern Wall", "x": 14459, "y": 8686, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "ruins-of-surmia", "name": "Ruins of Surmia", "x": 14541, "y": 8437, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "nolani-academy", "name": "Nolani Academy", "x": 11999, "y": 8760, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "borlis-pass", "name": "Borlis Pass", "x": 11125, "y": 7463, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-frost-gate", "name": "The Frost Gate", "x": 10097, "y": 7631, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "gates-of-kryta", "name": "Gates of Kryta", "x": 8334, "y": 9287, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "divinity-coast", "name": "Divinity Coast", "x": 5552, "y": 8385, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "riverside-province", "name": "Riverside Province", "x": 4533, "y": 10819, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "sanctum-cay", "name": "Sanctum Cay", "x": 5574, "y": 10554, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-wilds", "name": "The Wilds", "x": 2779, "y": 8918, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "bloodstone-fen", "name": "Bloodstone Fen", "x": 1630, "y": 9375, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "aurora-glade", "name": "Aurora Glade", "x": 2645, "y": 9985, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-dragons-lair", "name": "The Dragon's Lair", "x": 14008, "y": 14193, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "elona-reach", "name": "Elona Reach", "x": 13837, "y": 15315, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "dunes-of-despair", "name": "Dunes of Despair", "x": 13054, "y": 17236, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "thirsty-river", "name": "Thirsty River", "x": 14802, "y": 16787, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "ice-caves-of-sorrow", "name": "Ice Caves of Sorrow", "x": 10660, "y": 12861, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "iron-mines-of-moladune", "name": "Iron Mines of Moladune", "x": 11983, "y": 11689, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "thunderhead-keep", "name": "Thunderhead Keep", "x": 12635, "y": 12230, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "ring-of-fire", "name": "Ring of Fire", "x": 3561, "y": 15085, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "abaddons-mouth", "name": "Abaddon's Mouth", "x": 3186, "y": 14850, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "hells-precipice", "name": "Hell's Precipice", "x": 3146, "y": 15251, "minZoom": 2, "labelMinZoom": 3, "label": true}
 ]

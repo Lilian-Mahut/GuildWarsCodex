@@ -44,6 +44,22 @@
           28,
           28
         ]
+      },
+      "rule": {
+        "iconSizes": {
+          "3": [
+            41,
+            41
+          ],
+          "4": [
+            57,
+            57
+          ],
+          "5": [
+            57,
+            57
+          ]
+        }
       }
     },
     "guildhall": {
@@ -90,7 +106,10 @@
       }
     },
     "zone": {
-      "file": "zone.json"
+      "file": "zone.json",
+      "rule": {
+        "visibleZooms": [4]
+      }
     }
   }
 }

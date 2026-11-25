@@ -1,1 +1,21 @@
-[]
+[
+  {"id": "consulate-docks", "name": "Consulate Docks", "x": 12895, "y": 24801, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "chahbek-village", "name": "Chahbek Village", "x": 12889, "y": 25238, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "jokanur-diggings", "name": "Jokanur Diggings", "x": 10709, "y": 24899, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "blacktide-den", "name": "Blacktide Den", "x": 10673, "y": 25580, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "dajkah-inlet", "name": "Dajkah Inlet", "x": 14078, "y": 23766, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "nundu-bay", "name": "Nundu Bay", "x": 14334, "y": 24329, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "pogahn-passage", "name": "Pogahn Passage", "x": 16321, "y": 24809, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "venta-cemetery", "name": "Venta Cemetery", "x": 14972, "y": 23028, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "kodonur-crossroads", "name": "Kodonur Crossroads", "x": 16698, "y": 23764, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "rilohn-refuge", "name": "Rilohn Refuge", "x": 16937, "y": 23090, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "moddok-crevice", "name": "Moddok Crevice", "x": 17576, "y": 23044, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "gate-of-desolation", "name": "Gate of Desolation", "x": 14898, "y": 21805, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "jennurs-horde", "name": "Jennur's Horde", "x": 15984, "y": 20929, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "tihark-orchard", "name": "Tihark Orchard", "x": 16552, "y": 21074, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "grand-court-of-sebelkeh", "name": "Grand Court of Sebelkeh", "x": 17568, "y": 20268, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "dasha-vestibule", "name": "Dasha Vestibule", "x": 17630, "y": 19806, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "dzagonur-bastion", "name": "Dzagonur Bastion", "x": 18135, "y": 20201, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "remains-of-sahlahja", "name": "Remains of Sahlahja", "x": 14126, "y": 20969, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "ruins-of-morah", "name": "Ruins of Morah", "x": 13163, "y": 19945, "minZoom": 2, "labelMinZoom": 3, "label": true}
+]

@@ -33,8 +33,13 @@
     },
     "dungeon": {
       "kind": "icon",
-      "minZoom": 1,
-      "labelMinZoom": 0
+      "minZoom": 4,
+      "labelMinZoom": 0,
+      "maxZoom": 5,
+      "visibleZooms": [
+        4,
+        5
+      ]
     },
     "gate": {
       "kind": "icon",
@@ -42,7 +47,14 @@
       "labelMinZoom": 1,
       "hiddenLabelZooms": [
         2
-      ]
+      ],
+      "label": false,
+      "iconSizes": {
+        "5": 64,
+        "2": 25,
+        "3": 38,
+        "4": 51
+      }
     },
     "guildhall": {
       "kind": "icon",
@@ -56,18 +68,46 @@
     "mission": {
       "kind": "icon",
       "minZoom": 1,
-      "labelMinZoom": 0
+      "labelMinZoom": 3,
+      "maxZoom": 4,
+      "iconSizes": {
+        "3": [
+          58,
+          54
+        ],
+        "4": [
+          92,
+          84
+        ],
+        "5": [
+          92,
+          84
+        ]
+      }
     },
     "outpost": {
       "kind": "icon",
       "minZoom": 1,
       "labelMinZoom": 0,
       "iconSizes": {
-        "2": 20
+        "2": 20,
+        "3": [
+          22,
+          22
+        ],
+        "4": [
+          25,
+          25
+        ],
+        "5": [
+          25,
+          25
+        ]
       },
       "hiddenLabelZooms": [
         2
-      ]
+      ],
+      "maxZoom": 4
     },
     "realm": {
       "kind": "text",
@@ -78,7 +118,8 @@
     "region": {
       "kind": "text",
       "minZoom": 1,
-      "maxZoom": -2
+      "maxZoom": 1,
+      "visibleAtZoomOne": true
     },
     "torment": {
       "kind": "icon",
@@ -89,10 +130,22 @@
       "kind": "icon",
       "minZoom": 1,
       "labelMinZoom": 0,
-      "visibleAtZoomOne": true,
       "iconSizes": {
-        "2": 28
-      }
+        "2": 28,
+        "3": [
+          40,
+          42
+        ],
+        "4": [
+          53,
+          57
+        ],
+        "5": [
+          53,
+          57
+        ]
+      },
+      "maxZoom": 4
     },
     "zone": {
       "kind": "text",

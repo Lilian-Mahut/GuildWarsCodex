@@ -11,6 +11,7 @@ from threading import Lock
 from urllib.parse import urlsplit
 
 from sqlite import storage
+from contours import save_contour
 
 ROOT = Path(__file__).resolve().parent.parent
 BUILD_LOCK = Lock()
@@ -99,7 +100,7 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         path = urlsplit(self.path).path
-        if path not in ('/api/places','/api/build'):
+        if path not in ('/api/places','/api/build','/api/contours'):
             return self.reply(404, {'error':'Route inconnue'})
         origin = self.headers.get('Origin')
         if origin and urlsplit(origin).netloc not in (f'127.0.0.1:{PORT}',f'localhost:{PORT}'):
@@ -108,6 +109,10 @@ class Handler(SimpleHTTPRequestHandler):
             size = int(self.headers.get('Content-Length','0'))
             if size > 4_000_000 or size < 0: return self.reply(413, {'error':'Requête trop volumineuse'})
             payload = json.loads(self.rfile.read(size))
+            if path == '/api/contours':
+                with BUILD_LOCK:
+                    contours = save_contour(ROOT, payload)
+                return self.reply(200, {'contours': contours})
             if path == '/api/places':
                 result = save_rows(payload.get('rows'))
                 return self.reply(200 if result['ok'] else 422, result)

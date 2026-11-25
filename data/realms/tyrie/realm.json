@@ -5,6 +5,19 @@
     "x": 8000,
     "y": 11000
   },
+  "regionContourZones": {
+    "ascalon": [
+      "ascalon-foothills",
+      "diessa-lowlands",
+      "flame-temple-corridor",
+      "dragons-gullet",
+      "the-breach",
+      "old-ascalon",
+      "eastern-frontier",
+      "pockmark-flats",
+      "regent-valley"
+    ]
+  },
   "categories": {
     "collector": {
       "file": "collector.json",
@@ -44,6 +57,22 @@
           65,
           65
         ]
+      },
+      "rule": {
+        "iconSizes": {
+          "3": [
+            39,
+            41
+          ],
+          "4": [
+            53,
+            57
+          ],
+          "5": [
+            53,
+            57
+          ]
+        }
       }
     },
     "gate": {
@@ -90,7 +119,10 @@
       }
     },
     "zone": {
-      "file": "zone.json"
+      "file": "zone.json",
+      "rule": {
+        "visibleZooms": [4]
+      }
     }
   }
 }

@@ -1,1 +1,6 @@
-[]
+[
+  {"id": "shing-jea-island", "name": "Shing Jea Island", "x": 5000, "y": 36296, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "kaineng-city", "name": "Kaineng City", "x": 8808, "y": 33928, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "echovald-forest", "name": "Echovald Forest", "x": 9848, "y": 37928, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "the-jade-sea", "name": "The Jade Sea", "x": 11960, "y": 36904, "minZoom": 1, "labelMinZoom": 1}
+]

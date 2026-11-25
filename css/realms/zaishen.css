@@ -1,13 +1,4 @@
-.realm-zaishen .gw-label, .leaflet-tooltip.realm-zaishen {
-    font-family: "RealmFont", serif;
-}
-
-.realm-zaishen .gw-label  {
-    color: #f3d9a4;
-}
-
 .realm-zaishen.cat-realm  .gw-label {
-    font-size: 24px; letter-spacing: 2px; text-transform: uppercase;
     white-space: pre;
     text-align: center;
     width: max-content;

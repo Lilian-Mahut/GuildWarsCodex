@@ -1,1 +1,6 @@
-[]
+[
+  {"id": "istan", "name": "Istan", "x": 11096, "y": 25432, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "kourna", "name": "Kourna", "x": 16000, "y": 23776, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "vabbi", "name": "Vabbi", "x": 17496, "y": 20528, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "the-desolation", "name": "The Desolation", "x": 13576, "y": 20128, "minZoom": 1, "labelMinZoom": 1}
+]

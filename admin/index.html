@@ -4,20 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <base href="../" />
-    <title>Guild Wars Reborn — Administration</title>
+    <title>Guild Wars Codex — Administration</title>
     <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/markers.css" />
-    <link rel="stylesheet" href="admin/admin.css" />
+    <link rel="stylesheet" href="css/base.css?v=map-labels" />
+    <link rel="stylesheet" href="css/markers.css?v=map-labels" />
+    <link rel="stylesheet" href="admin/admin.css?v=contour-tree" />
     <link rel="stylesheet" href="css/cursors.css" />
     <script defer src="vendor/leaflet/leaflet.js"></script>
-    <script type="module" src="admin/admin.js"></script>
+    <script type="module" src="admin/admin.js?v=contour-tree"></script>
   </head>
   <body>
     <div id="layout">
       <aside id="panel">
         <header>
-          <h1>Guild Wars Reborn</h1>
+          <h1>Guild Wars Codex</h1>
           <small>Administration locale des markers</small>
         </header>
         <div id="notice" role="status">Chargement…</div>
@@ -104,6 +104,31 @@
         <section id="preview" class="preview">
           <h2>Prévisualisation du marker</h2>
           <div id="previewCard"></div>
+        </section>
+        <section class="preview" id="contours">
+          <h2>Contours de la carte</h2>
+          <details class="contour-chooser" data-chooser>
+            <summary>Choisir un contour</summary>
+            <div data-contour-list aria-label="Régions, zones et missions"></div>
+          </details>
+          <div class="toolbar">
+            <button type="button" data-edit disabled>Tracer ou modifier</button>
+            <button type="button" data-undo hidden>Retirer le dernier sommet</button>
+            <button type="button" data-restart hidden>Recommencer</button>
+          </div>
+          <div class="contour-colors" data-colors hidden>
+            <label>Couleur du contour
+              <input type="color" data-color value="#a9d5c2">
+            </label>
+            <label>Code hexadécimal
+              <input type="text" data-hex value="#A9D5C2" placeholder="#A9D5C2" maxlength="7" spellcheck="false">
+            </label>
+          </div>
+          <div class="toolbar">
+            <button type="button" data-save hidden>Enregistrer le contour</button>
+            <button type="button" data-cancel hidden>Annuler le tracé</button>
+          </div>
+          <div class="tip" role="status">Les contours de Tyrie et d’Eye of the North sont des tracés d’essai.</div>
         </section>
         <div class="actions">
           <button id="publish" type="button">Enregistrer</button>

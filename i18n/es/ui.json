@@ -1,4 +1,22 @@
 {
   "app.title": "Guild Wars 1 - Mapa interactivo",
-  "language": "Idioma"
+  "language": "Idioma",
+  "contours.regions": "Regiones",
+  "contours.zones": "Zonas explorables",
+  "category.realm": "Nombres de continentes",
+  "category.region": "Nombres de regiones",
+  "category.zone": "Nombres de zonas",
+  "category.town": "Ciudades",
+  "category.outpost": "Puestos avanzados",
+  "category.mission": "Misiones",
+  "category.arena": "Arenas",
+  "category.dungeon": "Mazmorras",
+  "category.gate": "Portales",
+  "category.guildhall": "Salas de clan",
+  "category.collector": "Coleccionistas",
+  "category.armor-collector": "Coleccionistas de armaduras",
+  "category.resurrection-shrine": "Santuarios de resurrección",
+  "category.merchant": "Mercaderes",
+  "category.torment": "Tormento",
+  "contours.missions": "Contornos de misiones"
 }

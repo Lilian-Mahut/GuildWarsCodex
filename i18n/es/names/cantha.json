@@ -2,7 +2,6 @@
   "shing-jea-monastery": "Monasterio de Shing Jea",
   "kaineng-center": "Kaineng",
   "houze-zu-heltzer": "Casa zu Heltzer",
-  "cavalon": "Cavalon",
   "asura-gate": "Portal asura",
   "shing-jea-arena": "Arena de Shing Jea",
   "senjis-corner": "Rincón de Senji",
@@ -10,12 +9,16 @@
   "tsumei-village": "Aldea de Tsumei",
   "seitung-harbor": "Puerto de Seitung",
   "ran-musu-gardens": "Jardines de Ran Musu",
-  "harvest-temple": "Templo de la Cosecha",
-  "breaker-hollow": "Cuenca Rota",
+  "harvest-temple": "Templo de la cosecha",
+  "breaker-hollow": "Cuenca rota",
   "leviathan-pits": "Foso de Leviatán",
   "maatu-keep": "Torreón de Maatu",
   "zin-ku-corridor": "Paso de Zin Ku",
   "brauer-academy": "Academia Brauer",
   "durheim-archives": "Archivos de Durheim",
-  "seafarers-rest": "Refugio del Viajante"
+  "seafarers-rest": "Refugio del viajante",
+  "shing-jea-island": "Isla de Shing Jea",
+  "kaineng-city": "Kaineng",
+  "echovald-forest": "Bosque de Echovald",
+  "the-jade-sea": "Mar de Jade"
 }

@@ -1,5 +1,5 @@
 import { getIconScale, isVisible, hasLabel, isLabelVisible } from './zoom-rules.js';
-import { getName, onLanguageChange } from './i18n.js';
+import { getName, onLanguageChange, t } from './i18n.js';
 
 const SHARED_ICONS = 'assets/shared/icons/';
 
@@ -11,10 +11,10 @@ function setEntryName(entry) {
         const isIslesTitle = entry.realm.id === 'zaishen' && entry.item.id === '_realm';
         let label = name;
         if (isIslesTitle) {
-            label = name.replace(/^Iles\s+Antagonistes$/i, 'Iles\nAntagonistes');
+            label = name.replace(/^(Îles|Iles)\s+(antagonistes)$/iu, '$1\n$2');
         }
         if (entry.realm.id === 'eotn' && entry.item.id === '_realm') {
-            label = name.replace(/\s+north$/i, '\nnorth');
+            label = name.replace(/\s+(north)$/i, '\n$1');
         }
         entry.labelEl.textContent = label;
     }
@@ -87,7 +87,9 @@ function applyZoom(entries, world, zoom) {
 
     entries.forEach((e) => {
         const zoomSize = e.rule.iconSizes?.[zoom];
-        const [width, height] = zoomSize ? [zoomSize, zoomSize] : e.size;
+        const [width, height] = Array.isArray(zoomSize)
+            ? zoomSize
+            : zoomSize ? [zoomSize, zoomSize] : e.size;
         const iconScale = scale;
 
         e.root.style.width = `${width}px`;
@@ -110,7 +112,7 @@ function applyZoom(entries, world, zoom) {
             if (!e.marker.getTooltip()) {
                 e.marker.bindTooltip(getName(e.realm.id, e.item), {
                     direction: 'bottom',
-                    className: `realm-${e.realm.id}`   // police du royaume
+                    className: `gw-map-tooltip realm-${e.realm.id}`
                 });
             }
             e.marker.getTooltip().options.offset =
@@ -119,7 +121,7 @@ function applyZoom(entries, world, zoom) {
     });
 }
 
-export function addMarkers(map, world) {
+export function addMarkers(map, world, control) {
     const entries = [];
 
     console.table(
@@ -176,6 +178,35 @@ export function addMarkers(map, world) {
     map.on('zoomanim', (e) => applyZoom(entries, world, e.zoom));
     map.on('zoomend', () => applyZoom(entries, world, map.getZoom()));
     applyZoom(entries, world, map.getZoom());
+
+    if (control) {
+        const groups = new Map();
+        for (const entry of entries) {
+            if (!groups.has(entry.category)) groups.set(entry.category, []);
+            groups.get(entry.category).push(entry);
+        }
+        const filters = new Map();
+        for (const category of new Set(world.realms.flatMap(realm => Object.keys(realm.categories)))) {
+            const group = L.layerGroup();
+            const setVisible = visible => {
+                for (const entry of groups.get(category) ?? []) {
+                    entry.root.classList.toggle('gw-category-hidden', !visible);
+                    if (!visible && entry.marker.getTooltip()) entry.marker.closeTooltip();
+                }
+            };
+            group.on('add', () => setVisible(true));
+            group.on('remove', () => setVisible(false));
+            group.addTo(map);
+            control.addOverlay(group, t('category.' + category));
+            filters.set(category, group);
+        }
+        onLanguageChange(() => {
+            for (const [category, group] of filters) {
+                control.removeLayer(group);
+                control.addOverlay(group, t('category.' + category));
+            }
+        });
+    }
 
     // Changement de langue : met à jour tous les noms sans recharger la page
     onLanguageChange(() => entries.forEach(setEntryName));

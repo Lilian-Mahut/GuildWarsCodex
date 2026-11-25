@@ -1,11 +1,9 @@
 {
-  "rata-sum": "Rata Sum",
   "gunnars-hold": "Gunnars Feste",
   "doomlore-shrine": "Schrein des Schicksalswissens",
   "boreal-station": "Nördliche Station",
   "eye-of-the-north": "Auge des Nordens",
   "olafstead": "Olafsheim",
-  "sifhalla": "Sifhalla",
   "drakkar-lake": "Drakkar-See",
   "curse-of-the-nornbear": "Der Fluch des Nornbären",
   "sepulchre-of-dragrimmar": "Grabkammer des Dragrimmar",
@@ -14,5 +12,17 @@
   "umbral-grotto": "Umbralgrotte",
   "tarnished-haven": "Trübwinkel",
   "longeyes-ledge": "Scharfauges Anhöhe",
-  "central-transfer-chamber": "Zentrale Transferkammer"
+  "central-transfer-chamber": "Zentrale Transferkammer",
+  "far-shiverpeaks": "Ferne Zittergipfel",
+  "charr-homelands": "Charr-Heimat",
+  "tarnished-coast": "Befleckte Küste",
+  "destructions-depths": "Die Tiefen der Zerstörung",
+  "blood-washes-blood": "Blut wäscht Blut",
+  "a-gate-too-far": "Ein Portal zu weit",
+  "a-time-for-heroes": "Eine Zeit für Helden",
+  "against-the-charr": "Gegen die Charr",
+  "warband-of-brothers": "Brudertrupp",
+  "assault-on-the-stronghold": "Der Angriff auf die Festung",
+  "the-elusive-golemancer": "Die scheue Golemantin",
+  "finding-the-bloodstone": "Auf der Suche nach dem Blutstein"
 }

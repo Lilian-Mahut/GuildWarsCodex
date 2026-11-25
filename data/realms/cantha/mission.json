@@ -1,1 +1,22 @@
-[]
+[
+  {"id": "minister-chos-estate", "name": "Minister Cho's Estate", "x": 4818, "y": 35976, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "zen-daijun", "name": "Zen Daijun", "x": 6600, "y": 36467, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "dragons-throat", "name": "Dragon's Throat", "x": 9009, "y": 33224, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "raisu-palace", "name": "Raisu Palace", "x": 8384, "y": 32927, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "imperial-sanctum", "name": "Imperial Sanctum", "x": 9324, "y": 32927, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "vizunah-square-foreign-quarter", "name": "Vizunah Square (Foreign Quarter)", "x": 8704, "y": 33314, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "vizunah-square-local-quarter", "name": "Vizunah Square (Local Quarter)", "x": 8825, "y": 33837, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "nahpui-quarter", "name": "Nahpui Quarter", "x": 7927, "y": 34695, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "sunjiang-district", "name": "Sunjiang District", "x": 9528, "y": 34737, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "tahnnakai-temple", "name": "Tahnnakai Temple", "x": 9512, "y": 34094, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "arborstone", "name": "Arborstone", "x": 8917, "y": 35881, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "altrumm-ruins", "name": "Altrumm Ruins", "x": 9071, "y": 36515, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-eternal-grove", "name": "The Eternal Grove", "x": 9586, "y": 38270, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "amatz-basin", "name": "Amatz Basin", "x": 9789, "y": 39228, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "unwaking-waters-kurzick", "name": "Unwaking Waters (Kurzick)", "x": 11152, "y": 38222, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "boreas-seabed", "name": "Boreas Seabed", "x": 10210, "y": 35368, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "zos-shivros-channel", "name": "Zos Shivros Channel", "x": 10939, "y": 35607, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "gyala-hatchery", "name": "Gyala Hatchery", "x": 11943, "y": 36012, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "the-aurios-mines", "name": "The Aurios Mines", "x": 12905, "y": 37236, "minZoom": 2, "labelMinZoom": 3, "label": true},
+  {"id": "unwaking-waters-luxon", "name": "Unwaking Waters (Luxon)", "x": 11649, "y": 37864, "minZoom": 2, "labelMinZoom": 3, "label": true}
+]

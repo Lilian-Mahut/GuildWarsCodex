@@ -1,1 +1,10 @@
-[]
+[
+  {"id": "ascalon", "name": "Ascalon", "x": 13832, "y": 8744, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "northern-shiverpeaks", "name": "Northern Shiverpeaks", "x": 10144, "y": 7512, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "southern-shiverpeaks", "name": "Southern Shiverpeaks", "x": 10808, "y": 12024, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "kryta", "name": "Kryta", "x": 6592, "y": 9256, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "maguuma-jungle", "name": "Maguuma Jungle", "x": 2040, "y": 10000, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "crystal-desert", "name": "Crystal Desert", "x": 13608, "y": 16208, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "ring-of-fire-islands", "name": "Ring of Fire Islands", "x": 3136, "y": 15208, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "orr", "name": "Orr", "x": 6640, "y": 14696, "minZoom": 1, "labelMinZoom": 1, "label": true}
+]

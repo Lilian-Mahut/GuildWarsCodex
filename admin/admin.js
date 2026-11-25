@@ -2,10 +2,15 @@ import { loadWorld } from '../js/core/loader.js';
 import { initMap } from '../js/core/map.js';
 import { addMarkers } from '../js/core/markers.js';
 import { initI18n } from '../js/core/i18n.js';
+import { loadContours } from '../js/core/contours.js';
+import { fetchJsonOptional } from '../js/core/http.js';
+import { compareNames, placeTypes, renderPlaceTree } from './place-list.js';
+import { initContourEditor } from './contours.js?v=contour-tree';
 
 const $ = (id) => document.getElementById(id);
 const form = $('editor');
 let rows = [], realms = {}, selected = -1, picking = false, dirty = false, map, world, pinLayer;
+let regionAssignments = {};
 let positionHistory = []; const NEAR_DISTANCE = 12;
 const keys = ['realm','category','id','name_en','x','y','name_fr','name_es','name_de','minZoom','labelMinZoom','label'];
 const notify = (message, error=false) => { $('notice').textContent=message; $('notice').classList.toggle('error',error); };
@@ -40,15 +45,16 @@ function updateCategories() {
 
     options(
         form.elements.category,
-        realms[realm] || [],
+        (realms[realm] ?? []).slice().sort((a, b) => compareNames(placeTypes[a] ?? a, placeTypes[b] ?? b)),
         '— Choisir une catégorie —',
-        categoryLabels
+        placeTypes
     );
 }
 function refreshFilters(){
     options($('realmFilter'),Object.keys(realms),'Tous les royaumes');
     const categories = $('realmFilter').value ? realms[$('realmFilter').value] : [...new Set(Object.values(realms).flat())].sort();
-    options($('categoryFilter'),categories||[],'Toutes les catégories',categoryLabels);
+    const sorted = (categories ?? []).slice().sort((a, b) => compareNames(placeTypes[a] ?? a, placeTypes[b] ?? b));
+    options($('categoryFilter'),sorted,'Toutes les catégories',placeTypes);
 }
 function isIncomplete(r, kind) {
     if (kind === 'missing-coords') return r.category !== '_realm' && !validPoint(r);
@@ -76,13 +82,6 @@ function renderPreview() {
 function filtered() {
     const q = $('search').value.trim().toLowerCase();
 
-    const compare = (a, b) =>
-        String(a || '').localeCompare(
-            String(b || ''),
-            'fr',
-            { sensitivity: 'base', numeric: true }
-        );
-
     return rows
         .map((r, i) => ({ r, i }))
         .filter(({ r }) =>
@@ -103,12 +102,6 @@ function filtered() {
             )) &&
 
             isIncomplete(r, $('qualityFilter').value)
-        )
-        .sort((a, b) =>
-            compare(a.r.realm, b.r.realm) ||
-            compare(a.r.category, b.r.category) ||
-            compare(a.r.name_en, b.r.name_en) ||
-            a.i - b.i
         );
 }
 
@@ -131,7 +124,13 @@ function renderPins(){
         } else {
             pin.classList.add('admin-point');
         }
-        const icon = L.divIcon({ className: '', html: pin, iconSize: [20, 20], iconAnchor: [10, 10] });
+        const regionOverview = r.category === 'region' && map.getZoom() === 1;
+        const icon = L.divIcon({
+            className: '',
+            html: pin,
+            iconSize: [20, 20],
+            iconAnchor: regionOverview ? [10, 32] : [10, 10]
+        });
         L.marker(map.unproject([Number(r.x),Number(r.y)],world.maxZoom),{icon,title:r.name_en||'Lieu',draggable:i===selected})
           .on('click',e=>{L.DomEvent.stopPropagation(e);select(i);})
           .on('dragstart',()=>{positionHistory.push({i,x:r.x,y:r.y});})
@@ -141,23 +140,7 @@ function renderPins(){
 }
 
 function renderList() {
-    const list = $('list');
-    list.replaceChildren();
-
-    filtered().forEach(({ r, i }) => {
-        const b = document.createElement('button');
-
-        b.type = 'button';
-        b.className = 'place' + (selected === i ? ' active' : '');
-
-        b.textContent =
-            `${r.realm} / ${r.category} / ${r.name_en || '(sans nom)'}` +
-            (validPoint(r) ? '' : ' ⚠ coordonnées');
-
-        b.onclick = () => select(i);
-
-        list.append(b);
-    });
+    renderPlaceTree($('list'), filtered(), rows, world, regionAssignments, selected, select, validPoint);
 
     renderPins();
     renderQuality();
@@ -261,15 +244,22 @@ async function request(path,method='GET',data){
 }
 async function init(){
     try{
-        const [data,loadedWorld]=await Promise.all([request('/api/places'),loadWorld()]);
+        const [data,loadedWorld,assignments]=await Promise.all([
+            request('/api/places'), loadWorld(), fetchJsonOptional('admin/region-assignments.json')
+        ]);
+        regionAssignments = assignments;
         rows=data.rows;realms=data.realms;world=loadedWorld;
         await initI18n(world.realms.map(realm => realm.id));
         map = initMap(world);
+        const contourEditor = initContourEditor(map, world, await loadContours(), request, regionAssignments, rows);
         addMarkers(map, {
             ...world,
             realms: world.realms.map(realm => ({
                 ...realm,
-                categories: { realm: realm.categories.realm }
+                categories: {
+                    realm: realm.categories.realm,
+                    region: realm.categories.region
+                }
             }))
         });
 
@@ -281,7 +271,7 @@ async function init(){
         options(form.elements.realm,Object.keys(realms));updateCategories();refreshFilters();renderList();
         if(rows.length)select(0,false);
         map.on('click',e=>{
-            if(!picking||selected<0)return;
+            if(contourEditor.active||!picking||selected<0)return;
             const p=map.project(e.latlng,world.maxZoom);
             const x=Math.round(p.x),y=Math.round(p.y);
             // Renseigner d'abord les champs obligatoires, puis valider le formulaire.

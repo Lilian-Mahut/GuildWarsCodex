@@ -1,3 +1,14 @@
+@font-face {
+    font-family: "Friz Quadrata Pro";
+    src: local("Friz Quadrata Pro Regular"), local("FrizQuadrataPro-Regular");
+    font-style: normal;
+    font-weight: 400;
+}
+
+.gw-label, .leaflet-tooltip.gw-map-tooltip {
+    font-family: "Friz Quadrata Pro", "Marcellus", Georgia, serif;
+}
+
 .gw-item--text .gw-label {
     transform: translate(-50%, -50%);
 }
@@ -28,14 +39,22 @@
     transform: translate(-50%, calc(var(--half) * var(--s, 1) + 2px));
     transition: transform 0.25s ease, opacity 0.25s ease;
     white-space: nowrap;
-    font: "Arbutus Slab", Arial, sans-serif;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.2;
-    color: #fff;
-    text-shadow: 0 0 3px #000, 0 0 3px #000, 1px 1px 2px #000;
+    color: #fbedc8;
+    text-shadow: 0 0 1px #000, 0 0 3px rgb(0 0 0 / 90%), 0 1px 2px rgb(0 0 0 / 80%);
     pointer-events: none;
     user-select: none;
+}
+
+.gw-marker.gw-category-hidden {
+    display: none;
+}
+
+.cat-realm .gw-label {
+    font-size: 44px;
+    letter-spacing: 4px;
 }
 
 .gw-label.is-off,

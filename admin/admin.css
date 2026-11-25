@@ -3,3 +3,34 @@ html,body,#layout{height:100%;margin:0}#layout{display:grid;grid-template-column
 .quality{border:1px solid #45525d;padding:8px 10px;margin:12px 0;border-radius:6px}.quality label{margin:0}.quality #qualityStats{color:#c9d5dd;font-size:12px;margin-top:8px;line-height:1.5}.tip{font-size:12px;color:#aebfcb;line-height:1.5}.preview{border-top:1px solid #465562;margin-top:16px;padding-bottom:12px}.preview h2{font-size:16px}.preview-card{border:1px solid #526473;background:#101a22;border-radius:8px;padding:12px;line-height:1.6}.preview-card strong{font-size:16px}.preview-meta{font-size:12px;color:#aebfcb}.preview-flag{font-size:12px;color:#ffd38c}.admin-point{cursor:grab}.admin-point.selected{cursor:grab;box-shadow:0 0 0 4px #fff9,0 0 14px 4px #ffcc72}.place:focus-visible{outline:2px solid #ffca72}
 .admin-category-icon { display: block; width: 20px; height: 20px; object-fit: contain; }
 .admin-category-icon.selected { border-radius: 50%; box-shadow: 0 0 0 2px #fff9, 0 0 8px 3px #ffcc72; }
+
+.gw-contour-editing { cursor: crosshair; }
+.gw-contour-editing .leaflet-marker-pane .leaflet-interactive { pointer-events: none; }
+.gw-contour-vertex { background: #ffe5aa; border: 2px solid #302719; border-radius: 50%; }
+#contours .toolbar { flex-wrap: wrap; }
+
+.contour-colors:not([hidden]) { display: flex; gap: 12px; align-items: end; }
+.contour-colors input[type="color"] { padding: 2px; height: 34px; }
+.contour-colors input[data-hex] { width: 10ch; font-family: monospace; }
+.contour-colors input[aria-invalid="true"] { border-color: #f58b94; }
+
+#list { max-height: min(42vh, 420px); }
+.place-tree, .place-tree ul { list-style: none; margin: 0; padding: 0; }
+.place-tree ul { margin-left: 11px; padding-left: 8px; border-left: 1px solid #45525d; }
+.place-tree h2, .place-tree h3 { margin: 0; padding: 6px 8px; }
+.place-tree h2 { font-size: 15px; background: #223441; }
+.place-tree h3 { font-size: 13px; color: #f4dba4; }
+.place-tree h2:has(button), .place-tree h3:has(button) { padding: 0; }
+.place-tree h2 button, .place-tree h3 button { font: inherit; color: inherit; }
+.place-tree .place { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; }
+.place-type { background: #334354; color: #ecf3fa; border-radius: 4px; padding: 2px 5px; font-size: 10px; text-align: center; }
+[data-category="zone"] .place-type { background: #285143; }
+[data-category="mission"] .place-type { background: #674331; }
+[data-category="town"] .place-type { background: #245369; }
+[data-category="outpost"] .place-type { background: #4b4d2b; }
+[data-category="arena"] .place-type { background: #593a61; }
+
+.contour-chooser { margin: 8px 0; }
+.contour-chooser summary { cursor: pointer; padding: 8px; background: #111a22; border-radius: 4px; }
+.contour-chooser[inert] summary { opacity: 0.65; }
+[data-contour-list] { max-height: min(42vh, 420px); overflow: auto; border: 1px solid #45525d; }

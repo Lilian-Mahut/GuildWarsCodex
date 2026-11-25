@@ -1,1 +1,5 @@
-[]
+[
+  {"id": "far-shiverpeaks", "name": "Far Shiverpeaks", "x": 12000, "y": 3368, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "charr-homelands", "name": "Charr Homelands", "x": 15096, "y": 3456, "minZoom": 1, "labelMinZoom": 1},
+  {"id": "tarnished-coast", "name": "Tarnished Coast", "x": 4144, "y": 12480, "minZoom": 1, "labelMinZoom": 1}
+]

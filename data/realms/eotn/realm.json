@@ -44,6 +44,18 @@
           32,
           32
         ]
+      },
+      "rule": {
+        "iconSizes": {
+          "4": [
+            32,
+            32
+          ],
+          "5": [
+            32,
+            32
+          ]
+        }
       }
     },
     "mission": {
@@ -54,6 +66,10 @@
           64,
           64
         ]
+      },
+      "rule": {
+        "maxZoom": 5,
+        "hiddenLabelZooms": [5]
       }
     },
     "outpost": {
@@ -80,7 +96,10 @@
       }
     },
     "zone": {
-      "file": "zone.json"
+      "file": "zone.json",
+      "rule": {
+        "visibleZooms": [4]
+      }
     }
   }
 }

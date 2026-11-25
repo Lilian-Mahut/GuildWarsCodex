@@ -2,6 +2,7 @@ import { loadWorld } from './core/loader.js';
 import { initI18n, onLanguageChange, t } from './core/i18n.js';
 import { initMap } from './core/map.js';
 import { addMarkers } from './core/markers.js';
+import { addContourLayers, loadContours } from './core/contours.js';
 import { addLanguageControl } from './core/language-control.js';
 
 try {
@@ -12,7 +13,9 @@ try {
     await initI18n(world.realms.map((r) => r.id));
 
     const map = initMap(world);
-    addMarkers(map, world);
+    const control = L.control.layers({}, {}, { position: 'topright' }).addTo(map);
+    addMarkers(map, world, control);
+    loadContours().then(contours => addContourLayers(map, world, contours, { control, revealOnHover: true })).catch(console.error);
     addLanguageControl(map);
     const updateTitle = () => { document.title = t('app.title'); };
     updateTitle();

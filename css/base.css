@@ -1,14 +1,8 @@
 @font-face {
-    font-family: "Arbutus Slab";
-    src: url("../fonts/ArbutusSlab-Regular.ttf") format("truetype");
-    font-weight: normal;
+    font-family: "Marcellus";
+    src: url("../fonts/Marcellus/Marcellus-Regular.ttf") format("truetype");
+    font-weight: 400;
     font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "RealmFont";
-    src: url("../fonts/Cinzel/Cinzel-VariableFont_wght.ttf") format("TrueType");
     font-display: swap;
 }
 
@@ -67,12 +61,10 @@ body, html {
     transform: translate(-50%, calc(var(--half) * var(--s, 1) + 2px));
     transition: transform 0.25s ease, opacity 0.25s ease;
     white-space: nowrap;
-    font: "Arbutus Slab", Arial, sans-serif;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.2;
     color: #fff;
-    text-shadow: 0 0 3px #000, 0 0 3px #000, 1px 1px 2px #000;
     pointer-events: none;
     user-select: none;
 }

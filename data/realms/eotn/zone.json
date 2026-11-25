@@ -1,3 +1,19 @@
 [
-  {"id": "drakkar-lake", "name": "Drakkar Lake", "x": 11118, "y": 3248, "minZoom": 1, "labelMinZoom": 1}
+  {"id": "drakkar-lake", "name": "Drakkar Lake", "x": 11118, "y": 3248, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "ice-cliff-chasms", "name": "Ice Cliff Chasms", "x": 12642, "y": 5070, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "hall-of-monuments", "name": "Hall of Monuments", "x": 12477, "y": 4700, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "battledepths", "name": "Battledepths", "x": 11931, "y": 4765, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "norrhart-domains", "name": "Norrhart Domains", "x": 12209, "y": 3728, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "varajar-fells", "name": "Varajar Fells", "x": 10843, "y": 4148, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "jaga-moraine", "name": "Jaga Moraine", "x": 11931, "y": 2289, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "bjora-marches", "name": "Bjora Marches", "x": 12867, "y": 2826, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "verdant-cascades", "name": "Verdant Cascades", "x": 9593, "y": 4992, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "grothmar-wardowns", "name": "Grothmar Wardowns", "x": 14117, "y": 3414, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "dalada-uplands", "name": "Dalada Uplands", "x": 15211, "y": 3109, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "sacnoth-valley", "name": "Sacnoth Valley", "x": 15192, "y": 4120, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "magus-stones", "name": "Magus Stones", "x": 2947, "y": 12476, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "riven-earth", "name": "Riven Earth", "x": 4072, "y": 12002, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "alcazia-tangle", "name": "Alcazia Tangle", "x": 4131, "y": 12776, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "arbor-bay", "name": "Arbor Bay", "x": 5272, "y": 12080, "minZoom": 4, "labelMinZoom": 4},
+  {"id": "sparkfly-swamp", "name": "Sparkfly Swamp", "x": 7018, "y": 12872, "minZoom": 4, "labelMinZoom": 4}
 ]
